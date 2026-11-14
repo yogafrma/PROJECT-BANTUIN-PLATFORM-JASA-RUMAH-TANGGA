@@ -1,0 +1,27 @@
+# Environment & Credentials
+.env
+*.key
+*.pem
+
+# Application Storage & Local Settings
+app/storage/settings.json
+storage/logs/*.log
+storage/cache/*
+
+# Dependencies
+chatbot-server/node_modules/
+node_modules/
+vendor/
+
+# User Uploads (keep directory structure)
+public/uploads/consultations/*
+!public/uploads/consultations/.gitkeep
+
+# OS / Editor Files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

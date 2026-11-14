@@ -1,0 +1,169 @@
+<mxfile host="app.diagrams.net" modified="2026-09-18T06:50:00.000Z" agent="Mozilla/5.0" version="24.0.0" type="device">
+  <diagram id="usecase-bantuin" name="Use Case Diagram BANTUIN">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="950" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- BATASAN SISTEM (SYSTEM BOUNDARY) -->
+        <mxCell id="boundary" value="BANTUIN (Web Application)" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;arcSize=3;fillColor=#F8FAFC;strokeColor=#94A3B8;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=18;fontColor=#0F172A;spacingTop=15;" vertex="1" parent="1">
+          <mxGeometry x="190" y="30" width="860" height="780" as="geometry" />
+        </mxCell>
+
+        <!-- ================= AKTOR DI KIRI (STICKMAN / ORANG TUSUK GIGI) ================= -->
+        
+        <!-- 1. Customer -->
+        <mxCell id="act_cust" value="Customer&#xa;(Pengguna)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=2.5;fontStyle=1;fontSize=13;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="60" y="160" width="55" height="105" as="geometry" />
+        </mxCell>
+
+        <!-- 2. Teknisi -->
+        <mxCell id="act_tech" value="Teknisi&#xa;(Mitra)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#DAE8FC;strokeColor=#6C8EBF;strokeWidth=2.5;fontStyle=1;fontSize=13;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="60" y="500" width="55" height="105" as="geometry" />
+        </mxCell>
+
+        <!-- 3. Admin -->
+        <mxCell id="act_admin" value="Admin&#xa;(Pengelola)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#E1D5E7;strokeColor=#9673A6;strokeWidth=2.5;fontStyle=1;fontSize=13;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="60" y="690" width="55" height="105" as="geometry" />
+        </mxCell>
+
+        <!-- ================= AKTOR DI KANAN (STICKMAN / ORANG TUSUK GIGI) ================= -->
+        
+        <!-- 4. Sistem AI -->
+        <mxCell id="act_ai" value="Sistem AI&#xa;(AI Assistant)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=2.5;fontStyle=1;fontSize=13;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="240" width="55" height="105" as="geometry" />
+        </mxCell>
+
+        <!-- ================= USE CASE DALAM SISTEM ================= -->
+
+        <!-- Kolom 1: Use Case Customer (Hijau) -->
+        <mxCell id="uc_reg" value="Registrasi Akun" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="230" y="70" width="160" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_login" value="Login Akun" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="230" y="125" width="160" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_profile" value="Kelola Profil" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="230" y="180" width="160" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_ai" value="Konsultasi AI Kerusakan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=2.2;fontStyle=1;fontSize=13;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="230" y="245" width="175" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_post" value="Buat Postingan Keluhan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="230" y="320" width="160" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_myposts" value="Lihat Riwayat &amp; Status Post" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="230" y="375" width="160" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_select" value="Pilih Teknisi Penawar" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="230" y="430" width="160" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_chat" value="Chat Internal &amp; WhatsApp" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="230" y="485" width="160" height="42" as="geometry" />
+        </mxCell>
+
+        <!-- Kolom 2: Sub-Fungsi Include AI (Oranye) -->
+        <mxCell id="sub_foto" value="Unggah Foto Kerusakan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=1.5;fontSize=11;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="490" y="160" width="165" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="sub_analisis" value="Analisis Gejala &amp; Kronologi" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=1.5;fontSize=11;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="490" y="215" width="165" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="sub_harga" value="Estimasi Rentang Biaya" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=1.5;fontSize=11;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="490" y="270" width="165" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="sub_savedb" value="Simpan Riwayat Database" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=1.5;fontSize=11;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="490" y="325" width="165" height="42" as="geometry" />
+        </mxCell>
+
+        <!-- Kolom 3: Extend Use Cases (Pink) -->
+        <mxCell id="ext_draft" value="Generate Draf Postingan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;strokeWidth=1.5;fontSize=11;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="750" y="235" width="175" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_rekom" value="Rekomendasi Teknisi Terkait" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;strokeWidth=1.5;fontSize=11;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="750" y="295" width="175" height="44" as="geometry" />
+        </mxCell>
+
+        <!-- Bagian Bawah: Use Case Teknisi (Biru) -->
+        <mxCell id="uc_techprof" value="Kelola Profil &amp; Keahlian" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="230" y="555" width="170" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_browse" value="Eksplorasi Postingan Keluhan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="470" y="555" width="180" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_bid" value="Kirim Penawaran (Bid/Response)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="710" y="555" width="195" height="42" as="geometry" />
+        </mxCell>
+
+        <!-- Bagian Bawah: Use Case Admin (Ungu) -->
+        <mxCell id="uc_admcat" value="Kelola Kategori Jasa (CRUD)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="230" y="650" width="175" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_admusers" value="Kelola Data Pengguna &amp; Teknisi" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="470" y="650" width="185" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="uc_admmon" value="Monitoring Postingan &amp; Sistem" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="710" y="650" width="195" height="42" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_logout" value="Logout Akun" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=#64748B;strokeWidth=1.5;fontSize=12;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="490" y="735" width="150" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ================= GARIS PENGHUBUNG (CLEAN & TIDAK KUSUT) ================= -->
+
+        <!-- Garis Customer -->
+        <mxCell id="g_c1" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#82B366;" edge="1" parent="1" source="act_cust" target="uc_reg"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_c2" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#82B366;" edge="1" parent="1" source="act_cust" target="uc_login"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_c3" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#82B366;" edge="1" parent="1" source="act_cust" target="uc_profile"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_c4" style="endArrow=none;html=1;strokeWidth=2.5;strokeColor=#2E7D32;" edge="1" parent="1" source="act_cust" target="uc_ai"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_c5" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#82B366;" edge="1" parent="1" source="act_cust" target="uc_post"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_c6" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#82B366;" edge="1" parent="1" source="act_cust" target="uc_myposts"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_c7" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#82B366;" edge="1" parent="1" source="act_cust" target="uc_select"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_c8" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#82B366;" edge="1" parent="1" source="act_cust" target="uc_chat"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Garis Include (Putus-putus Oranye) -->
+        <mxCell id="g_inc1" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;strokeColor=#D79B00;fontColor=#D79B00;fontSize=10;" edge="1" parent="1" source="uc_ai" target="sub_foto"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_inc2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;strokeColor=#D79B00;fontColor=#D79B00;fontSize=10;" edge="1" parent="1" source="uc_ai" target="sub_analisis"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_inc3" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;strokeColor=#D79B00;fontColor=#D79B00;fontSize=10;" edge="1" parent="1" source="uc_ai" target="sub_harga"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_inc4" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;strokeColor=#D79B00;fontColor=#D79B00;fontSize=10;" edge="1" parent="1" source="uc_ai" target="sub_savedb"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Garis Extend (Putus-putus Pink) -->
+        <mxCell id="g_ext1" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;strokeColor=#B85450;fontColor=#B85450;fontSize=10;" edge="1" parent="1" source="sub_analisis" target="ext_draft"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_ext2" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;html=1;strokeColor=#B85450;fontColor=#B85450;fontSize=10;" edge="1" parent="1" source="sub_harga" target="ext_rekom"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Garis Aktor Sistem AI di KANAN -->
+        <mxCell id="g_ai1" style="endArrow=none;html=1;strokeWidth=2;strokeColor=#D79B00;" edge="1" parent="1" source="sub_analisis" target="act_ai"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_ai2" style="endArrow=none;html=1;strokeWidth=2;strokeColor=#D79B00;" edge="1" parent="1" source="sub_harga" target="act_ai"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_ai3" style="endArrow=none;html=1;strokeWidth=2;strokeColor=#D79B00;" edge="1" parent="1" source="ext_draft" target="act_ai"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_ai4" style="endArrow=none;html=1;strokeWidth=2;strokeColor=#D79B00;" edge="1" parent="1" source="ext_rekom" target="act_ai"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Garis Teknisi di KIRI -->
+        <mxCell id="g_t1" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#6C8EBF;" edge="1" parent="1" source="act_tech" target="uc_techprof"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_t2" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#6C8EBF;" edge="1" parent="1" source="act_tech" target="uc_browse"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_t3" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#6C8EBF;" edge="1" parent="1" source="act_tech" target="uc_bid"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_t4" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#6C8EBF;" edge="1" parent="1" source="act_tech" target="uc_chat"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Garis Admin di KIRI -->
+        <mxCell id="g_a1" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#9673A6;" edge="1" parent="1" source="act_admin" target="uc_admcat"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_a2" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#9673A6;" edge="1" parent="1" source="act_admin" target="uc_admusers"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_a3" style="endArrow=none;html=1;strokeWidth=1.5;strokeColor=#9673A6;" edge="1" parent="1" source="act_admin" target="uc_admmon"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Garis Logout ke ketiga aktor -->
+        <mxCell id="g_l1" style="endArrow=none;html=1;strokeWidth=1;strokeColor=#94A3B8;" edge="1" parent="1" source="act_cust" target="uc_logout"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_l2" style="endArrow=none;html=1;strokeWidth=1;strokeColor=#94A3B8;" edge="1" parent="1" source="act_tech" target="uc_logout"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="g_l3" style="endArrow=none;html=1;strokeWidth=1;strokeColor=#94A3B8;" edge="1" parent="1" source="act_admin" target="uc_logout"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- ================= KOTAK KETERANGAN / LEGENDA (BAWAH) ================= -->
+        <mxCell id="box_legend" value="&lt;b&gt;Keterangan Warna:&lt;/b&gt;&lt;br&gt;🟢 Hijau : Use Case Utama Customer&lt;br&gt;🟡 Oranye : Sub-fungsi &amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;br&gt;🌸 Merah Muda : Fitur Tambahan &amp;lt;&amp;lt;extend&amp;gt;&amp;gt;&lt;br&gt;🔵 Biru : Use Case Teknisi&lt;br&gt;🟣 Ungu : Use Case Admin" style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="190" y="830" width="350" height="95" as="geometry" />
+        </mxCell>
+
+        <mxCell id="box_goal" value="&lt;b&gt;Tujuan Utama Sistem:&lt;/b&gt;&lt;br&gt;Membantu customer mengidentifikasi kerusakan rumah tangga secara cepat dan akurat menggunakan AI, serta menghubungkannya dengan teknisi ahli terdekat melalui sistem penawaran, chat internal, dan WhatsApp." style="shape=rect;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1.5;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="580" y="830" width="470" height="95" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

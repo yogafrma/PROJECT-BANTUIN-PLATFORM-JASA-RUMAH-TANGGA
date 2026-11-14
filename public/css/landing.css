@@ -1,0 +1,1227 @@
+/**
+ * BANTUIN - Microsoft Windows Fluent 2 Design Theme (Refined & Highly Legible)
+ * Inspired by microsoft.com/en-us/windows
+ * Aesthetic: Ultra-clean, high-contrast, larger readable fonts for mobile & desktop.
+ * Colors: Fluent Blue (#0067B8), Charcoal (#0F172A), Slate (#334155), Clean Canvas (#FAFBFC)
+ */
+
+/* ==========================================================================
+   1. Fluent 2 Design Tokens (Optimized Contrast & Legibility)
+   ========================================================================== */
+:root {
+    --fluent-blue: #0067B8;
+    --fluent-blue-hover: #005A9E;
+    --fluent-blue-active: #004578;
+    --fluent-blue-subtle: #EBF3FB;
+    --fluent-blue-border: #B9D9F3;
+    --fluent-copilot-grad: linear-gradient(135deg, #0078D4 0%, #2B88D8 50%, #00B7C3 100%);
+    
+    /* High-contrast typography colors */
+    --fluent-text-primary: #0F172A;     /* Deep bold slate/charcoal for crisp reading */
+    --fluent-text-secondary: #334155;   /* High-contrast slate for effortless scanning */
+    --fluent-text-muted: #64748B;       /* Medium slate for secondary captions */
+    
+    --fluent-bg-canvas: #FAFBFC;
+    --fluent-bg-card: #FFFFFF;
+    --fluent-bg-subtle: #F1F5F9;
+    
+    --fluent-border-subtle: #E2E8F0;
+    --fluent-border-hover: #0067B8;
+    
+    --fluent-shadow-card: 0 3px 10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.05);
+    --fluent-shadow-hover: 0 14px 30px -4px rgba(0, 0, 0, 0.09), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+    --fluent-shadow-elevated: 0 20px 40px -8px rgba(0, 0, 0, 0.12);
+    
+    --fluent-radius-sm: 8px;
+    --fluent-radius-md: 14px;
+    --fluent-radius-lg: 18px;
+    --fluent-radius-pill: 9999px;
+    
+    --fluent-transition: all 0.25s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+/* ==========================================================================
+   2. Page Canvas & Layout Baseline
+   ========================================================================== */
+.fluent-page {
+    background-color: var(--fluent-bg-canvas);
+    color: var(--fluent-text-primary);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: -0.01em;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Ensure all section anchors never get hidden under sticky navbar */
+section[id], div[id] {
+    scroll-margin-top: 96px;
+}
+
+/* ==========================================================================
+   3. Microsoft Windows Bloom Hero Section with Real Technician Backdrop
+   ========================================================================== */
+.fluent-hero {
+    position: relative;
+    min-height: calc(100vh - 75px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3.5rem;
+    padding-bottom: 4.5rem;
+    overflow: hidden;
+    background-color: var(--fluent-bg-canvas);
+    text-align: center;
+}
+
+/* Real Technician Photo Background with Soft Radial Bloom Overlay & Living Ambient Motion */
+.fluent-hero-bg {
+    position: absolute;
+    inset: -20px;
+    background: 
+        radial-gradient(ellipse at 50% 48%, rgba(255, 255, 255, 0.72) 0%, rgba(240, 246, 255, 0.60) 45%, rgba(224, 238, 252, 0.50) 72%, rgba(248, 250, 252, 0.88) 100%),
+        url('../images/hero-technician.jpg') center 28% / cover no-repeat;
+    z-index: 0;
+    pointer-events: none;
+    filter: saturate(1.1) brightness(1.02);
+    animation: heroBackdropBreathe 14s ease-in-out infinite alternate;
+    transform-origin: center center;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes heroBackdropBreathe {
+    0% {
+        transform: scale(1);
+        filter: saturate(1.08) brightness(1.01);
+    }
+    100% {
+        transform: scale(1.025);
+        filter: saturate(1.16) brightness(1.04);
+    }
+}
+
+/* Smooth gradient blend into the next section */
+.fluent-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 180px;
+    background: linear-gradient(180deg, rgba(250, 251, 252, 0) 0%, rgba(250, 251, 252, 0.65) 50%, var(--fluent-bg-canvas) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.fluent-hero .container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Centered Top Badge with Floating Micro-motion */
+.fluent-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 1.3rem;
+    border-radius: var(--fluent-radius-pill);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 103, 184, 0.2);
+    box-shadow: 0 4px 14px rgba(0, 103, 184, 0.08);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--fluent-text-primary);
+    animation: heroFloatBadge 4.5s ease-in-out infinite alternate;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.fluent-badge-pill:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 103, 184, 0.16);
+}
+
+@keyframes heroFloatBadge {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-4px); }
+}
+
+/* Glowing Pulse Dot with Radar Wave Rings */
+.fluent-pulse-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #107C41;
+    display: inline-block;
+    position: relative;
+    box-shadow: 0 0 0 3px rgba(16, 124, 65, 0.25);
+}
+
+.fluent-pulse-dot::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background-color: rgba(16, 124, 65, 0.45);
+    animation: radarWavePing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes radarWavePing {
+    0% { transform: scale(0.9); opacity: 1; }
+    70% { transform: scale(2.6); opacity: 0; }
+    100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* Centered Bold Headline */
+.fluent-headline {
+    font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+    font-weight: 900;
+    color: #0B132B;
+    line-height: 1.18;
+    letter-spacing: -0.035em;
+    margin-bottom: 1.15rem !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Living Liquid Gradient Shimmer */
+.fluent-headline-gradient {
+    background: linear-gradient(135deg, #0078D4 0%, #005A9E 25%, #00B7C3 50%, #005A9E 75%, #0078D4 100%);
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    position: relative;
+    animation: gradientLiquidFlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes gradientLiquidFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Subtitle: slightly smaller font size, clean center */
+.fluent-subheadline {
+    font-size: clamp(0.95rem, 1.18vw, 1.05rem);
+    color: #334155;
+    line-height: 1.62;
+    max-width: 600px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-weight: 500;
+    text-align: center !important;
+}
+
+/* Action Group: pushed down, buttons and badge compact */
+.hero-action-group {
+    margin-top: 2.25rem !important;
+}
+
+.hero-action-group .btn-fluent-primary,
+.hero-action-group .btn-fluent-secondary {
+    box-shadow: 0 4px 14px rgba(0, 48, 73, 0.12);
+}
+
+/* Trust Proof Badge with Floating & Star Gleam */
+.hero-trust-badge {
+    animation: trustBadgeFloat 4s ease-in-out infinite alternate;
+}
+
+@keyframes trustBadgeFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-3px); }
+}
+
+.hero-trust-badge .bi-star-fill {
+    display: inline-block;
+    animation: starGleam 2.8s ease-in-out infinite;
+}
+
+@keyframes starGleam {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0px #FFB900); }
+    50% { transform: scale(1.3) rotate(12deg); filter: drop-shadow(0 0 6px #FFB900); }
+}
+
+/* ==========================================================================
+   4. Fluent Buttons & Controls with Gacor Animations
+   ========================================================================== */
+.btn-fluent-primary {
+    background-color: var(--fluent-blue) !important;
+    border: 1px solid var(--fluent-blue) !important;
+    color: #FFFFFF !important;
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-radius: var(--fluent-radius-pill);
+    padding: 0.8rem 2.1rem;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.2s ease;
+    box-shadow: 0 4px 14px rgba(0, 103, 184, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    animation: primaryBtnPulseGlow 3.5s ease-in-out infinite;
+}
+
+@keyframes primaryBtnPulseGlow {
+    0%, 100% {
+        box-shadow: 0 4px 14px rgba(0, 103, 184, 0.28), 0 0 0 0 rgba(0, 103, 184, 0.3);
+    }
+    50% {
+        box-shadow: 0 8px 24px rgba(0, 103, 184, 0.42), 0 0 0 7px rgba(0, 103, 184, 0);
+    }
+}
+
+.btn-fluent-primary:hover {
+    background-color: var(--fluent-blue-hover) !important;
+    border-color: var(--fluent-blue-hover) !important;
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 103, 184, 0.5) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-fluent-primary i.bi-arrow-right {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-fluent-primary:hover i.bi-arrow-right {
+    transform: translateX(6px) scale(1.18);
+}
+
+.btn-fluent-secondary {
+    background-color: #FFFFFF !important;
+    border: 1px solid var(--fluent-border-subtle) !important;
+    color: var(--fluent-text-primary) !important;
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-radius: var(--fluent-radius-pill);
+    padding: 0.8rem 2rem;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-fluent-secondary i.bi-stars {
+    display: inline-block;
+    animation: starTwinkle 3s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        transform: scale(1.3) rotate(-14deg);
+        color: #00B7C3 !important;
+    }
+    75% {
+        transform: scale(1.25) rotate(14deg);
+        color: #0078D4 !important;
+    }
+}
+
+.btn-fluent-secondary:hover {
+    background-color: #F8FAFC !important;
+    border-color: rgba(0, 103, 184, 0.45) !important;
+    color: var(--fluent-blue) !important;
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 22px rgba(0, 103, 184, 0.16) !important;
+}
+
+/* Tactile Ripple Wave for Buttons */
+.fluent-ripple-wave {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: fluentRippleWave 0.85s cubic-bezier(0, 0, 0.2, 1);
+    background-color: rgba(255, 255, 255, 0.45);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.btn-fluent-secondary .fluent-ripple-wave {
+    background-color: rgba(0, 103, 184, 0.22);
+}
+
+@keyframes fluentRippleWave {
+    to {
+        transform: scale(3.5);
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   5. Minimalist 4 Pillars Trust Strip
+   ========================================================================== */
+.fluent-trust-strip {
+    background: #FFFFFF;
+    border-top: 1px solid var(--fluent-border-subtle);
+    border-bottom: 1px solid var(--fluent-border-subtle);
+    padding: 1.5rem 0;
+}
+
+.fluent-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0.25rem;
+}
+
+.fluent-trust-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--fluent-radius-md);
+    background: var(--fluent-blue-subtle);
+    color: var(--fluent-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.45rem;
+    flex-shrink: 0;
+}
+
+.fluent-trust-title {
+    font-weight: 800;
+    font-size: 1.08rem;
+    color: var(--fluent-text-primary);
+    line-height: 1.25;
+    margin-bottom: 0.15rem;
+}
+
+.fluent-trust-sub {
+    font-size: 0.9rem;
+    color: var(--fluent-text-secondary);
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   7. 4 Service Categories (Fluent Card Grid - Enhanced Scale)
+   ========================================================================== */
+.fluent-section-title {
+    font-size: clamp(2rem, 3.8vw, 2.75rem);
+    font-weight: 800;
+    color: var(--fluent-text-primary);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+}
+
+.fluent-section-desc {
+    font-size: 1.15rem;
+    color: var(--fluent-text-secondary);
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Microsoft Windows Card Style (Inspired by microsoft.com Photo 1)
+   ========================================================================== */
+.ms-section-canvas {
+    background-color: #EBF3FB !important; /* Soft light blue canvas as seen in Photo 1 */
+}
+
+.ms-card {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    transition: 
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.3s ease;
+}
+
+/* Sliding Vibrant Gradient Top Accent Line on Card Hover */
+.ms-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0078D4 0%, #00B7C3 50%, #8B5CF6 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 5;
+}
+
+.ms-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 24px 48px -8px rgba(0, 103, 184, 0.24), 0 8px 18px -4px rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 103, 184, 0.45);
+}
+
+.ms-card:hover::before {
+    transform: scaleX(1);
+}
+
+.ms-card-img-wrap {
+    padding: 12px 12px 0 12px;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+}
+
+.ms-card-img {
+    width: 100%;
+    height: 165px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+}
+
+.ms-card:hover .ms-card-img {
+    transform: scale(1.08);
+    filter: brightness(1.05) saturate(1.08);
+}
+
+.ms-card-body {
+    padding: 1.25rem 1.25rem 1.35rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.ms-card-title {
+    font-size: 1.22rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 0.45rem;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+}
+
+.ms-card:hover .ms-card-title {
+    color: var(--fluent-blue);
+}
+
+.ms-card-desc {
+    font-size: 0.92rem;
+    color: #475569;
+    line-height: 1.58;
+    margin-bottom: 0.85rem;
+    flex-grow: 1;
+}
+
+.ms-card-price {
+    font-size: 0.88rem;
+    color: var(--fluent-blue);
+    font-weight: 700;
+    background: #F0F6FC;
+    border: 1px solid rgba(0, 103, 184, 0.18);
+    padding: 0.3rem 0.75rem;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 1.15rem;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ms-card:hover .ms-card-price {
+    transform: scale(1.06) translateY(-2px);
+    background: rgba(0, 103, 184, 0.12);
+    box-shadow: 0 4px 12px rgba(0, 103, 184, 0.15);
+}
+
+.btn-ms-primary {
+    background: linear-gradient(135deg, #0078D4 0%, #0067B8 100%) !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    font-weight: 600;
+    font-size: 0.94rem;
+    border-radius: 8px;
+    padding: 0.72rem 1.25rem;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 103, 184, 0.2);
+}
+
+.btn-ms-primary:hover {
+    background: linear-gradient(135deg, #0086F0 0%, #0070C5 100%) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 103, 184, 0.42) !important;
+}
+
+.fluent-card {
+    background: var(--fluent-bg-card);
+    border: 1px solid var(--fluent-border-subtle);
+    border-radius: var(--fluent-radius-lg);
+    padding: 2rem 1.75rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: var(--fluent-transition);
+    box-shadow: var(--fluent-shadow-card);
+    text-decoration: none;
+    position: relative;
+}
+
+.fluent-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--fluent-shadow-hover);
+    border-color: var(--fluent-border-hover);
+}
+
+.fluent-card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--fluent-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.65rem;
+    margin-bottom: 1.25rem;
+    transition: transform 0.25s ease;
+}
+
+.fluent-card:hover .fluent-card-icon {
+    transform: scale(1.1);
+}
+
+/* Category Tints */
+.icon-listrik { background: #FEF3C7; color: #D97706; }
+.icon-ac { background: #E0F2FE; color: #0284C7; }
+.icon-kunci { background: #FFE4E6; color: #E11D48; }
+.icon-elektronik { background: #EDE9FE; color: #7C3AED; }
+
+.fluent-card-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--fluent-text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+}
+
+.fluent-card-desc {
+    font-size: 1.02rem;
+    color: var(--fluent-text-secondary);
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.fluent-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.15rem;
+    border-top: 1px solid var(--fluent-border-subtle);
+}
+
+.fluent-price-tag {
+    font-size: 0.92rem;
+    color: var(--fluent-text-secondary);
+}
+
+.fluent-price-tag strong {
+    color: var(--fluent-text-primary);
+    font-size: 1.12rem;
+    font-weight: 800;
+}
+
+/* ==========================================================================
+   8. Windows Copilot Inspired AI Section with Flowing Living Gradient
+   ========================================================================== */
+.fluent-copilot-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 103, 184, 0.2);
+    border-radius: 26px;
+    padding: 3.25rem 2.75rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 36px rgba(0, 103, 184, 0.08);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.fluent-copilot-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 48px rgba(0, 103, 184, 0.16);
+}
+
+.fluent-copilot-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #0078D4 0%, #00B7C3 25%, #8B5CF6 50%, #00B7C3 75%, #0078D4 100%);
+    background-size: 200% auto;
+    animation: gradientLiquidFlow 5s linear infinite;
+}
+
+.copilot-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.45rem 1.15rem;
+    border-radius: var(--fluent-radius-pill);
+    background: linear-gradient(135deg, rgba(0, 120, 212, 0.1) 0%, rgba(0, 183, 195, 0.12) 100%);
+    border: 1px solid rgba(0, 120, 212, 0.25);
+    color: var(--fluent-blue);
+    font-size: 0.92rem;
+    font-weight: 800;
+    box-shadow: 0 2px 8px rgba(0, 103, 184, 0.08);
+}
+
+.copilot-badge i.bi-stars {
+    display: inline-block;
+    animation: starTwinkle 2.5s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   9. Minimalist 3-Step Flow (Clean Stepper with Interactive Bounce)
+   ========================================================================== */
+.fluent-step-card {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid var(--fluent-border-subtle);
+    border-radius: var(--fluent-radius-lg);
+    padding: 2.75rem 2rem;
+    text-align: center;
+    height: 100%;
+    transition: 
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.3s ease;
+    box-shadow: var(--fluent-shadow-card);
+    overflow: hidden;
+}
+
+.fluent-step-card:hover {
+    border-color: rgba(0, 103, 184, 0.45);
+    box-shadow: 0 22px 45px -8px rgba(0, 103, 184, 0.22);
+    transform: translateY(-8px) scale(1.02);
+}
+
+.fluent-step-num {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #E0EEFC 0%, #CCE4FA 100%);
+    color: var(--fluent-blue);
+    font-weight: 800;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: 
+        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+    box-shadow: 0 4px 14px rgba(0, 103, 184, 0.12);
+    animation: stepNumPulse 3.5s ease-in-out infinite;
+}
+
+@keyframes stepNumPulse {
+    0%, 100% {
+        box-shadow: 0 4px 14px rgba(0, 103, 184, 0.15), 0 0 0 0 rgba(0, 103, 184, 0.25);
+    }
+    50% {
+        box-shadow: 0 6px 18px rgba(0, 103, 184, 0.25), 0 0 0 6px rgba(0, 103, 184, 0);
+    }
+}
+
+.fluent-step-card:hover .fluent-step-num {
+    transform: scale(1.22) rotate(10deg);
+    background: linear-gradient(135deg, #0078D4 0%, #00B7C3 100%);
+    color: #FFFFFF;
+    box-shadow: 0 8px 24px rgba(0, 103, 184, 0.45);
+}
+
+/* 4 Pillars Trust Icons with Living Floating Wave & Hover Pop */
+.fluent-trust-icon {
+    transition: 
+        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+    animation: trustIconFloat 4.2s ease-in-out infinite alternate;
+}
+
+.reveal-on-scroll:nth-child(1) .fluent-trust-icon { animation-delay: 0s; }
+.reveal-on-scroll:nth-child(2) .fluent-trust-icon { animation-delay: 0.6s; }
+.reveal-on-scroll:nth-child(3) .fluent-trust-icon { animation-delay: 1.2s; }
+.reveal-on-scroll:nth-child(4) .fluent-trust-icon { animation-delay: 1.8s; }
+
+@keyframes trustIconFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+}
+
+.fluent-step-card:hover .fluent-trust-icon {
+    transform: scale(1.25) rotate(-8deg);
+    background: linear-gradient(135deg, #0078D4 0%, #00B7C3 100%) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 10px 26px rgba(0, 103, 184, 0.38);
+}
+
+/* ==========================================================================
+   10. Minimalist Technician Card with Smooth Hover
+   ========================================================================== */
+.fluent-tech-card {
+    background: #FFFFFF;
+    border: 1px solid var(--fluent-border-subtle);
+    border-radius: 16px;
+    padding: 1.6rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: 
+        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.35s ease,
+        border-color 0.3s ease;
+    box-shadow: var(--fluent-shadow-card);
+}
+
+.fluent-tech-card:hover {
+    border-color: rgba(0, 103, 184, 0.45);
+    box-shadow: 0 18px 38px -6px rgba(0, 103, 184, 0.2);
+    transform: translateY(-6px) scale(1.015);
+}
+
+.fluent-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0078D4 0%, #0067B8 100%);
+    color: #FFFFFF;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.fluent-tech-card:hover .fluent-avatar {
+    transform: scale(1.15) rotate(8deg);
+    box-shadow: 0 6px 18px rgba(0, 103, 184, 0.35);
+}
+
+.fluent-tech-card:hover .bi-star-fill {
+    display: inline-block;
+    animation: starGleam 1.5s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   11. Compact & Hover-Interactive FAQ (Photo 2 Enhancement with Gacor Physics)
+   ========================================================================== */
+.faq-compact-wrap {
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.faq-hover-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-left: 4px solid transparent;
+    border-radius: 14px;
+    padding: 1.05rem 1.35rem;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.faq-hover-card:hover,
+.faq-hover-card.is-active {
+    border-color: rgba(0, 103, 184, 0.3);
+    border-left: 4px solid var(--fluent-blue);
+    box-shadow: 0 10px 26px rgba(0, 103, 184, 0.12);
+    transform: translateY(-3px);
+    background: #FFFFFF;
+}
+
+.faq-hover-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    user-select: none;
+}
+
+.faq-hover-question {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--fluent-text-primary);
+    transition: color 0.25s ease;
+}
+
+.faq-hover-card:hover .faq-hover-question,
+.faq-hover-card.is-active .faq-hover-question {
+    color: var(--fluent-blue);
+    font-weight: 700;
+}
+
+.faq-hover-icon {
+    font-size: 0.95rem;
+    color: #64748B;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
+    flex-shrink: 0;
+}
+
+.faq-hover-card:hover .faq-hover-icon,
+.faq-hover-card.is-active .faq-hover-icon {
+    transform: rotate(180deg) scale(1.18);
+    color: var(--fluent-blue);
+}
+
+.faq-hover-collapse {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+}
+
+.faq-hover-card:hover .faq-hover-collapse,
+.faq-hover-card.is-active .faq-hover-collapse {
+    max-height: 220px;
+    opacity: 1;
+}
+
+.faq-hover-body {
+    padding-top: 0.75rem;
+    font-size: 0.92rem;
+    color: #475569;
+    line-height: 1.6;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    margin-top: 0.65rem;
+}
+
+/* ==========================================================================
+   12. Minimalist Bottom Action Banner with Ambient Glow
+   ========================================================================== */
+.fluent-cta-card {
+    background: #FFFFFF;
+    border: 1px solid var(--fluent-border-subtle);
+    border-radius: 26px;
+    padding: 4.5rem 2.5rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.fluent-cta-card:hover {
+    box-shadow: 0 24px 56px rgba(0, 103, 184, 0.12);
+}
+
+.fluent-cta-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(0, 103, 184, 0.12) 0%, transparent 70%);
+    animation: ctaAmbientPulse 8s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes ctaAmbientPulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.15); opacity: 1; }
+}
+
+/* ==========================================================================
+   13. Scroll Reveal System: Cinematic Presentation Entrance (Smooth & Deliberate)
+   ========================================================================== */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(48px) scale(0.95);
+    filter: blur(8px);
+    transition: 
+        opacity 1.35s cubic-bezier(0.18, 0.9, 0.28, 1),
+        transform 1.35s cubic-bezier(0.18, 0.9, 0.28, 1),
+        filter 1.35s cubic-bezier(0.18, 0.9, 0.28, 1);
+    will-change: opacity, transform, filter;
+}
+
+.reveal-on-scroll.is-revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+}
+
+/* Distinct Cascade Stagger Delays for Presentation Flow */
+.stagger-1 { transition-delay: 0.15s; }
+.stagger-2 { transition-delay: 0.32s; }
+.stagger-3 { transition-delay: 0.48s; }
+.stagger-4 { transition-delay: 0.65s; }
+.stagger-5 { transition-delay: 0.82s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        filter: none !important;
+    }
+}
+
+/* ==========================================================================
+   14. Microsoft Fluent Navbar & UI Harmonization (Landing Only)
+   ========================================================================== */
+.main-navbar {
+    background: rgba(255, 255, 255, 0.94) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.top-info-bar {
+    background-color: #004B87 !important;
+    color: #FFFFFF !important;
+    font-size: 0.85rem !important;
+}
+
+.top-info-bar .text-warning {
+    color: #FFD54F !important;
+}
+
+.brand-title-accent {
+    color: var(--fluent-blue) !important;
+}
+
+.navbar-nav .nav-link {
+    color: var(--fluent-text-primary) !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    padding: 0.45rem 1rem !important;
+    border-radius: var(--fluent-radius-pill) !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--fluent-blue) !important;
+    background-color: var(--fluent-blue-subtle) !important;
+}
+
+/* Normal Soft Light-Blue Pill (Matches Windows Fluent Theme) */
+.navbar-nav .nav-link.active {
+    color: var(--fluent-blue) !important;
+    background-color: var(--fluent-blue-subtle) !important;
+    font-weight: 700 !important;
+}
+
+/* Minimalist Navbar Auth Buttons */
+.nav-btn-login {
+    color: var(--fluent-text-primary) !important;
+    font-size: 0.92rem !important;
+    font-weight: 600 !important;
+    padding: 0.42rem 1.15rem !important;
+    border-radius: var(--fluent-radius-pill) !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    border: 1px solid transparent !important;
+}
+
+.nav-btn-login:hover {
+    color: var(--fluent-blue) !important;
+    background-color: var(--fluent-blue-subtle) !important;
+}
+
+.nav-btn-register {
+    background-color: var(--fluent-blue) !important;
+    border: 1px solid var(--fluent-blue) !important;
+    color: #FFFFFF !important;
+    font-size: 0.92rem !important;
+    font-weight: 600 !important;
+    padding: 0.45rem 1.25rem !important;
+    border-radius: var(--fluent-radius-pill) !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    box-shadow: 0 2px 6px rgba(0, 103, 184, 0.2) !important;
+}
+
+.nav-btn-register:hover {
+    background-color: var(--fluent-blue-hover) !important;
+    border-color: var(--fluent-blue-hover) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(0, 103, 184, 0.3) !important;
+}
+
+/* ==========================================================================
+   14. Modern Fluent Dashboard Footer
+   ========================================================================== */
+.footer-bantuin {
+    background-color: var(--fluent-bg-canvas, #FAFBFC) !important;
+    border-top: 1px solid var(--fluent-border-subtle, #E2E8F0) !important;
+    color: var(--fluent-text-secondary, #334155) !important;
+}
+
+.footer-brand-title {
+    color: var(--fluent-text-primary, #0F172A) !important;
+    letter-spacing: -0.02em;
+}
+
+.footer-brand-accent {
+    color: var(--fluent-blue, #0067B8) !important;
+}
+
+.footer-desc {
+    color: var(--fluent-text-muted, #64748B) !important;
+    line-height: 1.6;
+}
+
+.footer-heading {
+    color: var(--fluent-text-primary, #0F172A) !important;
+    font-size: 0.95rem;
+    letter-spacing: -0.01em;
+}
+
+.footer-heading i {
+    color: var(--fluent-blue, #0067B8) !important;
+}
+
+.footer-links a {
+    color: var(--fluent-text-secondary, #334155) !important;
+    transition: var(--fluent-transition);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-links a i {
+    color: var(--fluent-blue, #0067B8) !important;
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--fluent-blue, #0067B8) !important;
+    transform: translateX(3px);
+}
+
+.footer-links a:hover i {
+    transform: translateX(2px);
+}
+
+/* Minimalist Dashboard Role Badges */
+.footer-badge-customer {
+    background-color: var(--fluent-blue-subtle, #EBF3FB) !important;
+    color: var(--fluent-blue, #0067B8) !important;
+    border: 1px solid var(--fluent-blue-border, #B9D9F3) !important;
+    font-weight: 600;
+}
+
+.footer-badge-tech {
+    background-color: #ECFDF5 !important;
+    color: #059669 !important;
+    border: 1px solid #A7F3D0 !important;
+    font-weight: 600;
+}
+
+.footer-badge-admin {
+    background-color: #F1F5F9 !important;
+    color: #334155 !important;
+    border: 1px solid #CBD5E1 !important;
+    font-weight: 600;
+}
+
+/* Dashboard System Status Card */
+.footer-system-card {
+    background: #FFFFFF !important;
+    border: 1px solid var(--fluent-border-subtle, #E2E8F0) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+.footer-spec-label {
+    color: var(--fluent-text-muted, #64748B) !important;
+}
+
+.footer-badge-arch {
+    background-color: var(--fluent-blue, #0067B8) !important;
+    color: #FFFFFF !important;
+    font-weight: 600;
+}
+
+.footer-badge-db {
+    background-color: var(--fluent-blue-subtle, #EBF3FB) !important;
+    color: var(--fluent-blue, #0067B8) !important;
+    border: 1px solid var(--fluent-blue-border, #B9D9F3) !important;
+    font-weight: 600;
+}
+
+.footer-badge-connected {
+    background-color: #DCFCE7 !important;
+    color: #166534 !important;
+    border: 1px solid #86EFAC !important;
+    font-weight: 600;
+}
+
+.footer-badge-standby {
+    background-color: #FEF3C7 !important;
+    color: #92400E !important;
+    border: 1px solid #FDE68A !important;
+    font-weight: 600;
+}
+
+.footer-divider {
+    border-color: var(--fluent-border-subtle, #E2E8F0) !important;
+    opacity: 1 !important;
+}
+
+.footer-copyright {
+    color: var(--fluent-text-muted, #64748B) !important;
+}
+
+/* ==========================================================================
+   15. Mobile & Tablet Refinements (Effortless Reading on Phones)
+   ========================================================================== */
+@media (max-width: 767.98px) {
+    .fluent-hero {
+        min-height: calc(85vh - 70px);
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    .fluent-headline {
+        font-size: 2.35rem;
+    }
+    .fluent-subheadline {
+        font-size: 1.1rem;
+    }
+    .fluent-hero-visual {
+        padding: 1.25rem 1rem;
+        margin-top: 2rem;
+    }
+    .fluent-card {
+        padding: 1.5rem 1.25rem;
+    }
+    .ms-card {
+        margin-bottom: 0.5rem;
+    }
+    .fluent-copilot-card {
+        padding: 2rem 1.5rem;
+    }
+}
