@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Laporan Proyek Akhir Mandiri RPL - BANTUIN - Yoga Fratama Fahdi Sardi (41257243)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#EFF6FF',
+                primaryTextColor: '#0F172A',
+                primaryBorderColor: '#0284C7',
+                lineColor: '#0369A1'
+            }
+        });
+    </script>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm 18mm 20mm 18mm;
+            @bottom-center {
+                content: counter(page);
+                font-family: 'Inter', sans-serif;
+                font-size: 9pt;
+                color: #64748B;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 10.5pt;
+            line-height: 1.65;
+            color: #1E293B;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Cover Page */
+        .cover-page {
+            page-break-after: always;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-bottom: 2px solid #E2E8F0;
+            padding-bottom: 40px;
+        }
+
+        .cover-header {
+            text-align: center;
+            border-bottom: 3px double #003049;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .cover-inst {
+            font-size: 13pt;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #003049;
+            margin-bottom: 4px;
+        }
+
+        .cover-sub-inst {
+            font-size: 10.5pt;
+            font-weight: 600;
+            color: #64748B;
+        }
+
+        .cover-body {
+            text-align: center;
+            margin: auto 0;
+        }
+
+        .cover-doc-tag {
+            display: inline-block;
+            background: #EFF6FF;
+            color: #0078D4;
+            border: 1px solid #BFDBFE;
+            padding: 4px 16px;
+            border-radius: 99px;
+            font-size: 10pt;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cover-title {
+            font-size: 24pt;
+            font-weight: 800;
+            color: #003049;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+
+        .cover-app-name {
+            color: #0078D4;
+        }
+
+        .cover-desc {
+            font-size: 12pt;
+            color: #475569;
+            max-width: 680px;
+            margin: 0 auto 30px auto;
+        }
+
+        .meta-card {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 20px 28px;
+            text-align: left;
+            max-width: 620px;
+            margin: 0 auto;
+            font-size: 10pt;
+        }
+
+        .meta-card table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .meta-card td {
+            padding: 5px 8px;
+            vertical-align: top;
+            border: none !important;
+        }
+
+        .meta-card td:first-child {
+            font-weight: 700;
+            color: #003049;
+            width: 160px;
+        }
+
+        .video-box {
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin-top: 14px;
+            font-size: 9.5pt;
+        }
+
+        .video-box a {
+            color: #15803D;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .video-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Content Styling */
+        h1 {
+            font-size: 16pt;
+            font-weight: 800;
+            color: #003049;
+            border-bottom: 2px solid #0078D4;
+            padding-bottom: 8px;
+            margin-top: 36px;
+            margin-bottom: 16px;
+            page-break-after: avoid;
+        }
+
+        h2 {
+            font-size: 13.5pt;
+            font-weight: 700;
+            color: #004870;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 11.5pt;
+            font-weight: 700;
+            color: #0F172A;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-top: 4px;
+            margin-bottom: 12px;
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 9.5pt;
+            page-break-inside: avoid;
+        }
+
+        th, td {
+            border: 1px solid #CBD5E1;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #F1F5F9;
+            font-weight: 700;
+            color: #003049;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9pt;
+            background: #F1F5F9;
+            color: #0F172A;
+            padding: 2px 5px;
+            border-radius: 4px;
+            border: 1px solid #E2E8F0;
+        }
+
+        pre {
+            background: #0F172A;
+            color: #F8FAFC;
+            padding: 14px 18px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 8.5pt;
+            line-height: 1.5;
+            margin: 14px 0;
+            page-break-inside: avoid;
+        }
+
+        pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+            border: none;
+        }
+
+        .mermaid {
+            text-align: center;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 10px;
+            padding: 16px;
+            margin: 16px 0;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #E2E8F0;
+            margin: 24px 0;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover Page -->
+    <div class="cover-page">
+        <div class="cover-header">
+            <div class="cover-inst">PROGRAM STUDI S1 TEKNIK INFORMATIKA</div>
+            <div class="cover-inst" style="color: #0078D4;">STMIK IKMI CIREBON</div>
+            <div class="cover-sub-inst">Mata Kuliah: Rekayasa Perangkat Lunak (TIKB2503021) — Semester 3 (4 SKS)</div>
+        </div>
+
+        <div class="cover-body">
+            <div class="cover-doc-tag">BERKAS LAPORAN TUGAS PROYEK AKHIR MANDIRI (OBE)</div>
+            <div class="cover-title">
+                <span class="cover-app-name">BANTUIN</span><br>
+                Platform Layanan Jasa Perbaikan Rumah Tangga Berbasis Web & Kecerdasan Artifisial (AI)
+            </div>
+            <div class="cover-desc">
+                Kompilasi Tunggal Dokumen PRD (IEEE 830), SDD (4 Pemodelan UML & UI/UX Figma), serta Laporan Pengujian Kode & CI/CD Pipeline DevOps.
+            </div>
+
+            <div class="meta-card">
+                <table>
+                    <tr>
+                        <td>Nama Mahasiswa</td>
+                        <td>: <strong>Yoga Fratama Fahdi Sardi</strong></td>
+                    </tr>
+                    <tr>
+                        <td>NIM / Kelas</td>
+                        <td>: <strong>41257243</strong> (Kelas 1C - 2025)</td>
+                    </tr>
+                    <tr>
+                        <td>Dosen Pengampu</td>
+                        <td>: <strong>Yudhistira Arie Wijaya, M.Kom., CDS.</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Repositori GitHub</td>
+                        <td>: <a href="https://github.com/yogafrma/PROJECT-BANTUIN-PLATFORM-JASA-RUMAH-TANGGA" target="_blank">github.com/yogafrma/PROJECT-BANTUIN...</a></td>
+                    </tr>
+                </table>
+
+                <div class="video-box">
+                    <strong>Tautan Luaran Video Presentasi (YouTube):</strong><br>
+                    • <strong>Video Progres 1 (PRD & Konsep):</strong> <a href="https://youtu.be/EDChMg5fP7E" target="_blank">https://youtu.be/EDChMg5fP7E</a><br>
+                    • <strong>Video Progres 2 (UML & UI/UX):</strong> <a href="https://youtu.be/DvSUCWPcI6Q" target="_blank">https://youtu.be/DvSUCWPcI6Q</a><br>
+                    • <strong>Video Final (Live Demo & CI/CD):</strong> <a href="https://youtu.be/vljBlnMVWDY" target="_blank">https://youtu.be/vljBlnMVWDY</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; font-size: 9.5pt; color: #94A3B8; border-top: 1px solid #E2E8F0; padding-top: 14px;">
+            STMIK IKMI Cirebon &bull; Tahun Akademik 2025/2026 &bull; Kurikulum Outcome-Based Education (OBE)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <pre><code># DOKUMEN TUGAS PROYEK AKHIR MANDIRI
+</code></pre>
+<h2 id="rekayasa-perangkat-lunak-tikb2503021-semester-3">REKAYASA PERANGKAT LUNAK (TIKB2503021) — SEMESTER 3</h2>
+<h3 id="program-studi-s1-teknik-informatika-stmik-ikmi-cirebon">PROGRAM STUDI S1 TEKNIK INFORMATIKA — STMIK IKMI CIREBON</h3>
+<hr />
+<h3 id="bantuin-platform-layanan-jasa-perbaikan-rumah-tangga-berbasis-web-dengan-integrasi-kecerdasan-artifisial-ai"><strong>BANTUIN: Platform Layanan Jasa Perbaikan Rumah Tangga Berbasis Web dengan Integrasi Kecerdasan Artifisial (AI)</strong></h3>
+<ul>
+<li><strong>Nama Mahasiswa:</strong> Yoga Fratama Fahdi Sardi</li>
+<li><strong>NIM:</strong> 41257243</li>
+<li><strong>Kelas:</strong> 1C (2025)</li>
+<li><strong>Program Studi:</strong> S1 Teknik Informatika</li>
+<li><strong>Mata Kuliah / Kode:</strong> Rekayasa Perangkat Lunak / TIKB2503021 (4 SKS: 2 Teori + 2 Praktik)</li>
+<li><strong>Dosen Pengampu:</strong> Yudhistira Arie Wijaya, M.Kom., CDS.</li>
+<li><strong>Tautan Repositori GitHub:</strong> <a href="https://github.com/yogafrma/PROJECT-BANTUIN-PLATFORM-JASA-RUMAH-TANGGA">https://github.com/yogafrma/PROJECT-BANTUIN-PLATFORM-JASA-RUMAH-TANGGA</a></li>
+<li><strong>Tautan Video Progres 1 (PRD &amp; Konsep Aplikasi):</strong> <a href="https://youtu.be/EDChMg5fP7E">https://youtu.be/EDChMg5fP7E</a></li>
+<li><strong>Tautan Video Progres 2 (UML &amp; UI/UX):</strong> <a href="https://youtu.be/DvSUCWPcI6Q">https://youtu.be/DvSUCWPcI6Q</a></li>
+<li><strong>Tautan Video Final (Live Demo &amp; CI/CD):</strong> <a href="https://youtu.be/vljBlnMVWDY">https://youtu.be/vljBlnMVWDY</a></li>
+</ul>
+<hr />
+<h1 id="daftar-isi-dokumen">DAFTAR ISI DOKUMEN</h1>
+<ol>
+<li><strong>BAGIAN I: PRODUCT REQUIREMENT DOCUMENT (PRD / SRS MANDIRI)</strong></li>
+<li>1.1 Latar Belakang &amp; Identifikasi Masalah Riil</li>
+<li>1.2 Tujuan &amp; Nilai Guna Aplikasi (<em>Value Proposition</em>)</li>
+<li>1.3 Ruang Lingkup Sistem (<em>Scope &amp; Boundaries</em>)</li>
+<li>1.4 Spesifikasi Kebutuhan Fungsional (<em>User Stories &amp; Acceptance Criteria</em>)</li>
+<li>1.5 Spesifikasi Kebutuhan Non-Fungsional</li>
+<li>1.6 Spesifikasi Fitur Kecerdasan Artifisial (<em>AI Feature Specifications</em>)</li>
+<li><strong>BAGIAN II: SOFTWARE DESIGN DOCUMENT (SDD MANDIRI &amp; PEMODELAN UML)</strong></li>
+<li>2.1 Arsitektur Sistem Perangkat Lunak (<em>Clean PHP MVC Pattern</em>)</li>
+<li>2.2 Diagram UML 1: Use Case Diagram &amp; Skenario Penggunaan</li>
+<li>2.3 Diagram UML 2: Activity Diagram Alur Bisnis &amp; AI</li>
+<li>2.4 Diagram UML 3: Class Diagram Berorientasi Objek (<em>SOLID Principles</em>)</li>
+<li>2.5 Diagram UML 4: Sequence Diagram Alur Pertukaran Pesan</li>
+<li>2.6 Pemodelan Basis Data (<em>Entity Relationship Diagram &amp; Data Dictionary</em>)</li>
+<li>2.7 Perancangan Antarmuka UI/UX &amp; <em>Design System</em></li>
+<li><strong>BAGIAN III: KONSTRUKSI KODE, PENGUJIAN (TESTING) &amp; CI/CD DEVOPS</strong></li>
+<li>3.1 Implementasi Kode Bersih (<em>Clean Code &amp; Security Hardening</em>)</li>
+<li>3.2 Strategi Pengujian Otomatis (<em>Unit Testing Matrix</em>)</li>
+<li>3.3 Otomatisasi CI/CD Pipeline GitHub Actions</li>
+<li>3.4 Panduan Instalasi &amp; <em>Environment Setup</em></li>
+<li><strong>BAGIAN IV: KESIMPULAN &amp; REFLEKSI PEMBELAJARAN MANDIRI</strong></li>
+</ol>
+<hr />
+<h1 id="bagian-i-product-requirement-document-prd-srs-mandiri">BAGIAN I: PRODUCT REQUIREMENT DOCUMENT (PRD / SRS MANDIRI)</h1>
+<p><em>(Sesuai Standar IEEE 830 / ISO 29148)</em></p>
+<h3 id="11-latar-belakang-identifikasi-masalah-riil">1.1 Latar Belakang &amp; Identifikasi Masalah Riil</h3>
+<p>Kerusakan infrastruktur rumah tangga—seperti korsleting instalasi listrik, kebocoran unit pendingin udara (AC), kunci pintu patah/rusak akibat tindak pembobolan, hingga malafungsi peralatan elektronik rumah—merupakan masalah darurat yang dialami oleh masyarakat perkotaan. Berdasarkan observasi lapangan dan analisis kebutuhan masyarakat, ditemukan tiga kendala utama:<br />
+1. <strong>Asimetri Informasi &amp; Ketidakpastian Biaya:</strong> Konsumen sering merasa dirugikan karena tidak adanya standar patokan biaya perbaikan. Biaya jasa kerap melambung secara sepihak setelah teknisi tiba di lokasi.<br />
+2. <strong>Kurangnya Pengetahuan Teknis Konsumen:</strong> Masyarakat awam sering tidak mengetahui klasifikasi kerusakan yang dialami serta spesifikasi teknisi yang tepat untuk dihubungi, sehingga berisiko salah penanganan.<br />
+3. <strong>Aksesibilitas &amp; Ketiadaan Sistem Kesepakatan Resmi:</strong> Pencarian teknisi panggilan manual (melalui selebaran atau grup media sosial) tidak memiliki sistem pelacakan transaksi, ketiadaan mekanisme negosiasi harga tertulis, dan tidak ada jaminan riwayat servis.</p>
+<h3 id="12-tujuan-nilai-guna-aplikasi-value-proposition">1.2 Tujuan &amp; Nilai Guna Aplikasi (<em>Value Proposition</em>)</h3>
+<p>Aplikasi <strong>BANTUIN</strong> dirancang untuk menjadi platform digital satu pintu (<em>one-stop home services platform</em>) yang menghubungkan pelanggan (<em>Customer</em>) dengan teknisi terverifikasi (<em>Mitra Teknisi</em>) secara transparan, aman, dan cerdas. Nilai guna utama platform meliputi:<br />
+- <strong>AI Damage Diagnosis:</strong> Konsumen dapat mendeteksi estimasi jenis kerusakan dan rentang biaya wajar sebelum teknisi dipanggil hanya dengan mengunggah foto dan menceritakan kronologi.<br />
+- <strong>Transparansi Negosiasi &amp; Deal Lock:</strong> Kesepakatan biaya jasa dilakukan dan dikunci secara digital melalui fitur <em>Live Price Negotiation</em> di dalam ruang chat resmi.<br />
+- <strong>Riwayat Servis &amp; Faktur Transparan:</strong> Memberikan catatan transaksi digital yang rapi untuk pelanggan dan teknisi.</p>
+<h3 id="13-ruang-lingkup-sistem-scope-boundaries">1.3 Ruang Lingkup Sistem (<em>Scope &amp; Boundaries</em>)</h3>
+<ul>
+<li><strong>In-Scope (Lingkup Pengerjaan):</strong></li>
+<li>Autentikasi pengguna berbasis peran (<em>Role-Based Access Control / RBAC</em>) untuk 3 Aktor: Customer, Mitra Teknisi, dan Super Admin.</li>
+<li>Modul Konsultasi AI Kerusakan Rumah Tangga berbasis foto dan teks.</li>
+<li>Modul Postingan Permintaan Jasa Servis (CRUD, unggah foto keluhan, status keluhan).</li>
+<li>Modul Ruang Chat Interaktif (<em>1-Screen Viewport Locked Layout</em>) terintegrasi dengan fitur pengajuan, penerimaan (deal), dan penolakan harga resmi.</li>
+<li>Modul Penyelesaian Transaksi, Konfirmasi Pembayaran (<em>Cash</em> / QRIS), dan Riwayat Servis.</li>
+<li>Modul Super Admin untuk tata kelola pengguna, kategori jasa, monitoring transaksi, serta <em>Live AI Engine Switcher</em> (Google Gemini &amp; NVIDIA NIM).</li>
+<li><strong>Out-of-Scope (Batasan Sistem):</strong></li>
+<li>Sistem tidak memproses gateway pembayaran kartu kredit perbankan berlisensi BI secara langsung (penyelesaian transaksi menggunakan pencatatan konfirmasi tunai dan QRIS mandiri).</li>
+</ul>
+<hr />
+<h3 id="14-spesifikasi-kebutuhan-fungsional-functional-requirements">1.4 Spesifikasi Kebutuhan Fungsional (<em>Functional Requirements</em>)</h3>
+<h4 id="tabel-user-stories-acceptance-criteria">Tabel User Stories &amp; Acceptance Criteria</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID Kebutuhan</th>
+<th style="text-align: left;">Sebagai (<em>Role</em>)</th>
+<th style="text-align: left;">Saya Ingin (<em>Goal</em>)</th>
+<th style="text-align: left;">Agar (<em>Benefit</em>)</th>
+<th style="text-align: left;"><em>Acceptance Criteria</em> (Kriteria Keberterimaan)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>REQ-F01</strong></td>
+<td style="text-align: left;">Customer</td>
+<td style="text-align: left;">Mendaftar akun baru dengan Nama, Email, Password, dan WhatsApp.</td>
+<td style="text-align: left;">Memiliki akun pribadi untuk memesan teknisi.</td>
+<td style="text-align: left;">Validasi email unik, hash password aman (Bcrypt), nomor WhatsApp otomatis dinormalisasi ke format <code>628...</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>REQ-F02</strong></td>
+<td style="text-align: left;">Customer</td>
+<td style="text-align: left;">Mengunggah foto kerusakan dan kronologi pada menu Konsultasi AI.</td>
+<td style="text-align: left;">Mengetahui perkiraan kerusakan dan rekomendasi biaya.</td>
+<td style="text-align: left;">Sistem memanggil modul AI, mengembalikan analisis probabilitas kerusakan, rentang harga (Min-Max), dan draf postingan otomatis.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>REQ-F03</strong></td>
+<td style="text-align: left;">Customer</td>
+<td style="text-align: left;">Menerbitkan postingan keluhan perbaikan ke platform.</td>
+<td style="text-align: left;">Teknisi yang sesuai kategori dapat melihat dan menanggapi.</td>
+<td style="text-align: left;">Postingan muncul di feed publik/kategori dengan status <code>open</code> (<em>Menunggu Teknisi</em>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>REQ-F04</strong></td>
+<td style="text-align: left;">Customer &amp; Teknisi</td>
+<td style="text-align: left;">Membuka ruang chat privat berbasis postingan perbaikan.</td>
+<td style="text-align: left;">Berkomunikasi intensif mengenai kendala teknis dan jadwal visit.</td>
+<td style="text-align: left;">Layar chat tidak memiliki scroll luar (<em>1-screen full viewport</em>), chat real-time, pesan lawan di kiri, pesan pengguna di kanan.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>REQ-F05</strong></td>
+<td style="text-align: left;">Customer &amp; Teknisi</td>
+<td style="text-align: left;">Mengajukan penawaran harga (<em>Negotiation Proposal</em>) di dalam chat.</td>
+<td style="text-align: left;">Kedua pihak menyepakati nominal ongkos kerja sebelum servis.</td>
+<td style="text-align: left;">Nominal penawaran muncul dalam bentuk kartu khusus berstatus <code>pending</code>, lawan chat dapat klik <em>Terima (Deal)</em> atau <em>Tolak</em>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>REQ-F06</strong></td>
+<td style="text-align: left;">Customer</td>
+<td style="text-align: left;">Mengonfirmasi transaksi selesai dan metode pembayaran.</td>
+<td style="text-align: left;">Menutup pesanan dan mencatat riwayat transaksi.</td>
+<td style="text-align: left;">Modal konfirmasi pembayaran menampilkan harga kesepakatan final, metode Cash/QRIS, dan status postingan berubah menjadi <code>Selesai</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>REQ-F07</strong></td>
+<td style="text-align: left;">Mitra Teknisi</td>
+<td style="text-align: left;">Melihat keluhan perbaikan berdasarkan kategori keahliannya.</td>
+<td style="text-align: left;">Memilih pekerjaan yang relevan dengan spesialisasi servis.</td>
+<td style="text-align: left;">Teknisi listrik hanya memfilter pekerjaan listrik, teknisi kunci memfilter kunci, dsb.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>REQ-F08</strong></td>
+<td style="text-align: left;">Super Admin</td>
+<td style="text-align: left;">Mengelola kategori jasa (Tambah, Edit, Hapus Kategori).</td>
+<td style="text-align: left;">Menjaga struktur bidang perbaikan tetap relevan.</td>
+<td style="text-align: left;">Admin dapat memperbarui nama, slug, dan ikon Bootstrap Icons kategori.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>REQ-F09</strong></td>
+<td style="text-align: left;">Super Admin</td>
+<td style="text-align: left;">Mengonfigurasi penyedia mesin AI (Google Gemini / NVIDIA NIM) dan menguji prompt di Playground.</td>
+<td style="text-align: left;">Memastikan respons bot AI selalu online dan optimal.</td>
+<td style="text-align: left;">Admin dapat mengganti model aktif, menyimpan API Key, dan menjalankan uji latensi langsung di dashboard.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="15-spesifikasi-kebutuhan-non-fungsional-non-functional-requirements">1.5 Spesifikasi Kebutuhan Non-Fungsional (<em>Non-Functional Requirements</em>)</h3>
+<ul>
+<li><strong>NFR-01 (Kinerja &amp; Efisiensi):</strong> Halaman web dimuat dalam waktu kurang dari 1.5 detik pada jaringan lokal/server standar. Latensi respons diagnosis AI dibatasi dengan batas waktu (<em>timeout</em>) 35 detik.</li>
+<li><strong>NFR-02 (Keamanan / Security Hardening):</strong></li>
+<li>Mencegah serangan <em>Cross-Site Request Forgery (CSRF)</em> menggunakan verifikasi token acak pada setiap form POST.</li>
+<li>Mencegah serangan <em>SQL Injection</em> dengan menggunakan <em>Prepared Statements PDO</em> secara mutlak pada seluruh lapisan query database.</li>
+<li>Mencegah serangan <em>Cross-Site Scripting (XSS)</em> dengan membungkus seluruh output dinamis menggunakan fungsi <code>htmlspecialchars()</code> (<code>e()</code>).</li>
+<li>Kata sandi wajib dienkripsi satu arah menggunakan algoritma <code>PASSWORD_BCRYPT</code>.</li>
+<li><strong>NFR-03 (Ketersediaan / Availability):</strong> Sistem dilengkapi mekanisme <em>Contextual Heuristic Fallback Engine</em> pada modul AI, sehingga jika API Key habis kuota atau internet terputus, sistem tetap menghasilkan diagnosis cerdas tanpa menimbulkan eror 500 fatal.</li>
+<li><strong>NFR-04 (Antarmuka &amp; Usabilitas):</strong> Desain visual mematuhi filosofi <strong>Microsoft Fluent 2 Design System</strong> dengan palet Azure Blue (<code>#0078D4</code>), aksen Prussian Navy (<code>#003049</code>), tata letak kartu lembut, tipografi proporsional, serta responsif di layar ponsel maupun desktop.</li>
+</ul>
+<hr />
+<h3 id="16-spesifikasi-fitur-kecerdasan-artifisial-ai-feature-specifications">1.6 Spesifikasi Fitur Kecerdasan Artifisial (<em>AI Feature Specifications</em>)</h3>
+<p>Integrasi AI pada platform BANTUIN dirancang sebagai solusi nyata (<em>high-impact feature</em>), bukan sekadar tempelan:</p>
+<div class="mermaid">flowchart LR
+    A[&quot;Foto Kerusakan &amp; Deskripsi Keluhan&quot;] --&gt; B[&quot;Modul AI BANTUIN (AIService)&quot;]
+    B --&gt; C{&quot;Penyedia AI Aktif&quot;}
+    C --&gt;|&quot;Mode Cloud 1&quot;| D[&quot;Google Gemini 1.5 Flash (Vision &amp; Text)&quot;]
+    C --&gt;|&quot;Mode Cloud 2&quot;| E[&quot;NVIDIA NIM GPU (Mistral Large / Nemotron)&quot;]
+    C --&gt;|&quot;Mode Fallback&quot;| F[&quot;BANTUIN Contextual Expert Heuristic&quot;]
+    D --&gt; G[&quot;Hasil Diagnosis Terstruktur (JSON)&quot;]
+    E --&gt; G
+    F --&gt; G
+    G --&gt; H[&quot;Estimasi Kerusakan, Kategori Jasa &amp; Rentang Biaya Rp&quot;]
+</div>
+<ol>
+<li><strong>AI Damage Diagnosis &amp; Cost Estimator:</strong> Menerima input visual (format <code>.jpg</code>, <code>.png</code>, <code>.webp</code>) dan teks deskripsi gejala. Output berupa laporan diagnosis terstruktur memuat:</li>
+<li>Analisis jenis kerusakan fisik dan teknis.</li>
+<li>Penentuan kategori teknisi yang tepat (Listrik, AC, Kunci, Elektronik).</li>
+<li>Estimasi rentang biaya servis wajar (Rp Min – Rp Max).</li>
+<li>Draf teks postingan keluhan yang siap diterbitkan ke feed aplikasi.</li>
+<li><strong>Chatbot BANTUIN Assistant (24 Jam):</strong> Asisten percakapan cerdas di beranda publik yang menjawab pertanyaan umum seputar biaya servis, jaminan garansi 30 hari, serta panduan tata cara pemesanan teknisi.</li>
+<li><strong>Multi-Model Provider Architecture:</strong> Arsitektur terpisah pada <code>app/services/AIProviderService.php</code> yang memungkinkan pergantian fleksibel antara Google Gemini dan NVIDIA NIM (Inference Microservice berbasis akselerasi GPU NVIDIA Cloud) tanpa mengubah struktur kode antarmuka.</li>
+</ol>
+<hr />
+<h1 id="bagian-ii-software-design-document-sdd-mandiri-pemodelan-uml">BAGIAN II: SOFTWARE DESIGN DOCUMENT (SDD MANDIRI &amp; PEMODELAN UML)</h1>
+<h3 id="21-arsitektur-sistem-perangkat-lunak-clean-php-mvc-architecture">2.1 Arsitektur Sistem Perangkat Lunak (<em>Clean PHP MVC Architecture</em>)</h3>
+<p>Sistem dibangun di atas arsitektur <strong>Model-View-Controller (MVC)</strong> murni berbasis bahasa pemrograman PHP 8.2 native dengan pemisahan tanggung jawab (<em>Separation of Concerns</em>):<br />
+- <strong>Core Kernel (<code>app/core/</code>):</strong> Mengelola routing URL (<code>App.php</code>), <em>Controller Base</em> (<code>Controller.php</code>), <em>Database Wrapper PDO</em> (<code>Database.php</code>), serta sesi keamanan (<code>Auth.php</code> dan <code>Helper.php</code>).<br />
+- <strong>Data Layer (<code>app/models/</code>):</strong> Bertanggung jawab atas integritas data tabel database (<code>UserModel</code>, <code>PostModel</code>, <code>ChatModel</code>, <code>CategoryModel</code>, <code>ConsultationModel</code>, <code>SettingModel</code>).<br />
+- <strong>Service Layer (<code>app/services/</code>):</strong> Modul logika independen pihak ketiga (<code>AIProviderService.php</code>, <code>EmailService.php</code>, <code>WhatsAppService.php</code>).<br />
+- <strong>Presentation Layer (<code>app/views/</code>):</strong> Berkas tampilan berbasis Bootstrap 5.3 yang memisahkan layout header, footer, dan konten spesifik aktor.</p>
+<hr />
+<h3 id="22-diagram-uml-1-use-case-diagram-skenario-penggunaan">2.2 Diagram UML 1: Use Case Diagram &amp; Skenario Penggunaan</h3>
+<div class="mermaid">flowchart LR
+    subgraph Aktor
+        Cust[&quot;fa:fa-user Customer (Pelanggan)&quot;]
+        Tech[&quot;fa:fa-wrench Mitra Teknisi&quot;]
+        Admin[&quot;fa:fa-shield-halved Super Admin&quot;]
+        AI[&quot;fa:fa-robot Sistem AI BANTUIN&quot;]
+    end
+
+    subgraph Batasan Sistem BANTUIN
+        UC1[&quot;Registrasi &amp; Autentikasi Akun&quot;]
+        UC2[&quot;Konsultasi Diagnosis Kerusakan AI&quot;]
+        UC3[&quot;Buat Postingan Permintaan Jasa&quot;]
+        UC4[&quot;Jelajahi &amp; Filter Keluhan Servis&quot;]
+        UC5[&quot;Chat Real-time &amp; Negosiasi Harga&quot;]
+        UC6[&quot;Konfirmasi Kesepakatan (Deal Lock)&quot;]
+        UC7[&quot;Penyelesaian Order &amp; Konfirmasi Bayar&quot;]
+        UC8[&quot;Lihat Riwayat Transaksi &amp; Faktur&quot;]
+        UC9[&quot;Manajemen Kategori &amp; Pengguna&quot;]
+        UC10[&quot;Konfigurasi Mesin Multi-AI &amp; Playground&quot;]
+    end
+
+    Cust --&gt; UC1
+    Cust --&gt; UC2
+    Cust --&gt; UC3
+    Cust --&gt; UC5
+    Cust --&gt; UC6
+    Cust --&gt; UC7
+    Cust --&gt; UC8
+
+    Tech --&gt; UC1
+    Tech --&gt; UC4
+    Tech --&gt; UC5
+    Tech --&gt; UC6
+    Tech --&gt; UC8
+
+    Admin --&gt; UC1
+    Admin --&gt; UC8
+    Admin --&gt; UC9
+    Admin --&gt; UC10
+
+    UC2 -.-&gt;|&quot;Memanggil Layanan&quot;| AI
+    UC10 -.-&gt;|&quot;Pengujian Model&quot;| AI
+</div>
+<h4 id="skenario-use-case-utama-konsultasi-kerusakan-ai-negosiasi-harga">Skenario Use Case Utama: Konsultasi Kerusakan AI &amp; Negosiasi Harga</h4>
+<ul>
+<li><strong>Nama Skenario:</strong> Melakukan Diagnosis Kerusakan AI dan Menyepakati Harga Servis.</li>
+<li><strong>Aktor:</strong> Customer, Mitra Teknisi, Sistem AI.</li>
+<li><strong>Kondisi Awal (<em>Pre-condition</em>):</strong> Customer dan Teknisi telah terdaftar dan login di platform BANTUIN.</li>
+<li><strong>Alur Utama (<em>Main Flow</em>):</strong></li>
+<li>Customer membuka menu Konsultasi AI dan mengunggah foto kunci pintu/AC/listrik yang rusak serta kronologinya.</li>
+<li>Sistem AI memproses data input dan menampilkan hasil analisis diagnosis serta estimasi biaya Rp 100.000 – Rp 250.000.</li>
+<li>Customer menekan tombol <em>Publikasikan Keluhan</em>.</li>
+<li>Mitra Teknisi melihat postingan keluhan pada feed kategori dan membuka ruang chat dengan Customer.</li>
+<li>Mitra Teknisi atau Customer membuka modal <em>Nego Harga</em> dan mengajukan nominal penawaran Rp 150.000.</li>
+<li>Lawan chat menyetujui tawaran tersebut dengan mengklik tombol <em>Terima (Deal)</em>.</li>
+<li>Sistem mengunci harga kesepakatan (<em>Deal Locked</em>) dan menampilkannya pada kartu pengumuman resmi di ruang chat.</li>
+<li>Setelah teknisi selesai bekerja di rumah pelanggan, Customer mengonfirmasi pembayaran dan status order otomatis berubah menjadi <code>Selesai</code>.</li>
+<li><strong>Kondisi Akhir (<em>Post-condition</em>):</strong> Transaksi tercatat di menu Riwayat Transaksi kedua belah pihak dengan status lunas dan kesepakatan harga final.</li>
+</ul>
+<hr />
+<h3 id="23-diagram-uml-2-activity-diagram-alur-bisnis-ai">2.3 Diagram UML 2: Activity Diagram Alur Bisnis &amp; AI</h3>
+<div class="mermaid">stateDiagram-v2
+    [*] --&gt; InputFotoDanDeskripsi
+    InputFotoDanDeskripsi --&gt; PanggilMesinAI: Customer Kirim Formulir
+
+    state PanggilMesinAI {
+        [*] --&gt; CekKoneksiCloud
+        CekKoneksiCloud --&gt; EksekusiGemini_Nvidia: API Key Valid &amp; Jaringan Normal
+        CekKoneksiCloud --&gt; EksekusiFallbackHeuristik: API Key Kosong / Jaringan Timeout
+        EksekusiGemini_Nvidia --&gt; BentukLaporanJSON
+        EksekusiFallbackHeuristik --&gt; BentukLaporanJSON
+    }
+
+    PanggilMesinAI --&gt; TampilkanHasilDiagnosis
+    TampilkanHasilDiagnosis --&gt; TerbitkanPostingan: Customer Klik Buat Postingan
+    TerbitkanPostingan --&gt; TeknisiLihatKeluhan: Postingan Masuk Feed Kategori
+    TeknisiLihatKeluhan --&gt; MasukRuangChat: Teknisi Buka Percakapan
+
+    state RuangChatDanNegosiasi {
+        [*] --&gt; DiskusiKendala
+        DiskusiKendala --&gt; AjukanPenawaranHarga
+        AjukanPenawaranHarga --&gt; EvaluasiTawaran
+        EvaluasiTawaran --&gt; TawaranDitolak: Klik Tolak
+        TawaranDitolak --&gt; DiskusiKendala: Ajukan Nominal Baru
+        EvaluasiTawaran --&gt; KesepakatanDisetujui: Klik Terima (Deal)
+        KesepakatanDisetujui --&gt; KunciHargaTransaksi
+    }
+
+    RuangChatDanNegosiasi --&gt; PengerjaanServis
+    PengerjaanServis --&gt; KonfirmasiPembayaran: Pelanggan Pilih Cash / QRIS
+    KonfirmasiPembayaran --&gt; CetakRiwayatTransaksi: Status Selesai
+    CetakRiwayatTransaksi --&gt; [*]
+</div>
+<hr />
+<h3 id="24-diagram-uml-3-class-diagram-berorientasi-objek-solid-principles">2.4 Diagram UML 3: Class Diagram Berorientasi Objek (<em>SOLID Principles</em>)</h3>
+<div class="mermaid">classDiagram
+    direction TB
+
+    class Database {
+        -PDO dbHandler
+        -PDOStatement statement
+        +query(query)
+        +bind(param, value, type)
+        +execute() bool
+        +resultSet() array
+        +single() object
+    }
+
+    class Model {
+        #Database db
+        +isDbConnected() bool
+    }
+
+    class UserModel {
+        -string table
+        +findByEmail(email) object
+        +findById(id) object
+        +register(data) int
+        +updateProfile(id, data) bool
+    }
+
+    class PostModel {
+        -string table
+        +getAllPosts(categoryFilter, statusFilter) array
+        +getPostById(id) object
+        +createPost(data) int
+        +updateStatus(id, status, agreedPrice) bool
+        +getTransactionHistory(userId, role, filter) array
+    }
+
+    class ChatModel {
+        -string convTable
+        -string msgTable
+        -string negoTable
+        +getConversationById(id) object
+        +getMessagesByConversationId(convId) array
+        +createNegotiation(convId, postId, senderId, price, note) object
+        +respondNegotiation(negoId, action, userId) bool
+    }
+
+    class AIProviderService {
+        &lt;&lt;Service&gt;&gt;
+        +getProviders() array
+        +getConfig() array
+        +chat(systemPrompt, messages, options) array
+        +testConnection(provider, apiKey, model) array
+        -callGeminiChat() array
+        -callOpenAiChat() array
+    }
+
+    class ChatController {
+        -ChatModel chatModel
+        -PostModel postModel
+        +room(id) void
+        +send() json
+        +negotiate() json
+        +negotiateAction() json
+    }
+
+    class PostController {
+        -PostModel postModel
+        +create() void
+        +detail(id) void
+        +complete() void
+    }
+
+    Model &lt;|-- UserModel
+    Model &lt;|-- PostModel
+    Model &lt;|-- ChatModel
+    Database &lt;-- Model
+
+    PostController --&gt; PostModel
+    ChatController --&gt; ChatModel
+    ChatController --&gt; PostModel
+    ChatController ..&gt; AIProviderService : &quot;Opsional Rekomendasi&quot;
+</div>
+<ul>
+<li><strong>Penerapan Prinsip SOLID:</strong></li>
+<li><strong>Single Responsibility Principle (SRP):</strong> Setiap Model hanya bertanggung jawab pada tabelnya masing-masing. Komunikasi AI dipisah sepenuhnya ke dalam <code>AIProviderService</code>, tidak bercampur di dalam controller.</li>
+<li><strong>Open/Closed Principle (OCP):</strong> Arsitektur <code>AIProviderService</code> terbuka untuk penambahan provider AI baru (seperti Groq, Claude, OpenAI) tanpa harus merombak kode controller yang sudah berjalan.</li>
+<li><strong>Liskov Substitution Principle (LSP):</strong> Seluruh model mewarisi kelas abstrak induk <code>Model</code> dengan implementasi wrapper PDO yang konsisten.</li>
+</ul>
+<hr />
+<h3 id="25-diagram-uml-4-sequence-diagram-alur-pertukaran-pesan">2.5 Diagram UML 4: Sequence Diagram Alur Pertukaran Pesan</h3>
+<div class="mermaid">sequenceDiagram
+    autonumber
+    actor C as Customer
+    participant V as View (Chat Room)
+    participant CC as ChatController
+    participant CM as ChatModel
+    participant PM as PostModel
+    participant DB as MySQL Database
+
+    Note over C,V: Skenario Negosiasi &amp; Deal Kunci Harga
+    C-&gt;&gt;V: Buka Modal &quot;Nego Harga&quot; &amp; Masukkan Rp 150.000
+    V-&gt;&gt;CC: POST /chat/negotiate (conv_id, price=150000, csrf_token)
+    CC-&gt;&gt;CC: Validasi Sesi &amp; Cek Status Postingan
+    CC-&gt;&gt;CM: createNegotiation(conv_id, post_id, customer_id, 150000)
+    CM-&gt;&gt;DB: INSERT INTO price_negotiations (status='pending')
+    DB--&gt;&gt;CM: Return nego_id
+    CM-&gt;&gt;DB: INSERT INTO messages (message='[NEGO:id:150000:pending:note]')
+    DB--&gt;&gt;CM: Return message_id
+    CC--&gt;&gt;V: JSON Response (success: true)
+    V--&gt;&gt;C: Kartu Penawaran Harga Tampil di Ruang Chat
+
+    Note over C,V: Teknisi Menerima Kesepakatan (Deal)
+    V-&gt;&gt;CC: POST /chat/negotiate-action (nego_id, action='accept')
+    CC-&gt;&gt;CM: respondNegotiation(nego_id, 'accept', technician_id)
+    CM-&gt;&gt;DB: UPDATE price_negotiations SET status='accepted'
+    CM-&gt;&gt;DB: INSERT INTO messages (message='[NEGO_DEAL:id:150000]')
+    CM-&gt;&gt;PM: updateAgreedPrice(post_id, 150000)
+    PM-&gt;&gt;DB: UPDATE posts SET agreed_price = 150000 WHERE id = post_id
+    DB--&gt;&gt;CC: Sukses
+    CC--&gt;&gt;V: JSON Response (success: true)
+    V--&gt;&gt;C: Tampilkan Banner &quot;Kesepakatan Harga Disetujui (DEAL) Rp 150.000&quot;
+</div>
+<hr />
+<h3 id="26-pemodelan-basis-data-entity-relationship-diagram-erd">2.6 Pemodelan Basis Data (<em>Entity Relationship Diagram - ERD</em>)</h3>
+<div class="mermaid">erDiagram
+    USERS ||--o{ POSTS : &quot;membuat&quot;
+    USERS ||--o{ TECHNICIAN_PROFILES : &quot;memiliki&quot;
+    USERS ||--o{ CONSULTATIONS : &quot;melakukan&quot;
+    USERS ||--o{ CONVERSATIONS : &quot;terlibat_sebagai_customer&quot;
+    USERS ||--o{ CONVERSATIONS : &quot;terlibat_sebagai_teknisi&quot;
+    CATEGORIES ||--o{ POSTS : &quot;mengklasifikasikan&quot;
+    CATEGORIES ||--o{ TECHNICIAN_PROFILES : &quot;spesialisasi&quot;
+    POSTS ||--o{ CONVERSATIONS : &quot;merujuk_ke&quot;
+    POSTS ||--o{ PRICE_NEGOTIATIONS : &quot;memiliki_tawaran&quot;
+    CONVERSATIONS ||--o{ MESSAGES : &quot;memuat&quot;
+    CONVERSATIONS ||--o{ PRICE_NEGOTIATIONS : &quot;memiliki_riwayat_nego&quot;
+
+    USERS {
+        int id PK
+        string name
+        string email
+        string password
+        string role
+        string phone
+        string whatsapp
+        datetime created_at
+    }
+
+    CATEGORIES {
+        int id PK
+        string name
+        string slug
+        string icon
+        text description
+    }
+
+    POSTS {
+        int id PK
+        int user_id FK
+        int category_id FK
+        string title
+        text description
+        string status
+        int agreed_price
+        int estimated_min_price
+        int estimated_max_price
+        string image_url
+        datetime created_at
+    }
+
+    CONVERSATIONS {
+        int id PK
+        int post_id FK
+        int customer_id FK
+        int technician_id FK
+        datetime created_at
+    }
+
+    MESSAGES {
+        int id PK
+        int conversation_id FK
+        int sender_id FK
+        text message
+        boolean is_read
+        datetime created_at
+    }
+
+    PRICE_NEGOTIATIONS {
+        int id PK
+        int conversation_id FK
+        int post_id FK
+        int sender_id FK
+        int proposed_price
+        string status
+        text note
+        datetime created_at
+    }
+
+    CONSULTATIONS {
+        int id PK
+        int user_id FK
+        string image_path
+        text symptom_description
+        json ai_diagnosis_result
+        datetime created_at
+    }
+
+    SYSTEM_SETTINGS {
+        string setting_key PK
+        mediumtext setting_value
+        datetime updated_at
+    }
+</div>
+<hr />
+<h3 id="27-perancangan-antarmuka-uiux-design-system">2.7 Perancangan Antarmuka UI/UX &amp; <em>Design System</em></h3>
+<p>Antarmuka BANTUIN dirancang menggunakan kaidah modern <strong>Microsoft Fluent 2</strong>:<br />
+1. <strong>Warna Dasar &amp; Semantik:</strong><br />
+   - <em>Primary Accent (Azure Blue):</em> <code>#0078D4</code> — Melambangkan profesionalisme, teknologi, dan keandalan.<br />
+   - <em>Deep Navy Surface:</em> <code>#003049</code> — Digunakan pada <em>Hero Banner Command Center</em> untuk memberikan kesan elegan dan kokoh.<br />
+   - <em>Success Pill:</em> <code>#10B981</code> / Soft Green (<code>#E8F5E9</code>) — Menandakan status <em>Deal Disetujui</em> dan kemitraan teknisi terverifikasi.<br />
+   - <em>Warning Pill:</em> <code>#F59E0B</code> — Menandakan penawaran harga yang membutuhkan tindakan lawan bicara.<br />
+2. <strong>Karakteristik Komponen UI:</strong><br />
+   - <strong>Rounded Corners:</strong> Kartu dan tombol menggunakan <em>border-radius</em> melengkung modern (<code>rounded-4</code>, <code>rounded-pill</code>) yang ramah pengguna.<br />
+   - <strong>Pencegahan Scrolling Berlebih:</strong> Halaman Chat Room dirancang dengan arsitektur <em>1-Screen Viewport Lock</em>, di mana container chat terkunci sesuai tinggi layar perangkat dan hanya area pesan yang bergulir (<em>smooth internal scroll</em>).</p>
+<hr />
+<h1 id="bagian-iii-konstruksi-kode-pengujian-testing-cicd-devops">BAGIAN III: KONSTRUKSI KODE, PENGUJIAN (TESTING) &amp; CI/CD DEVOPS</h1>
+<h3 id="31-implementasi-kode-bersih-clean-code-security-hardening">3.1 Implementasi Kode Bersih (<em>Clean Code &amp; Security Hardening</em>)</h3>
+<ul>
+<li>Seluruh query database diisolasi dalam model dan dieksekusi melalui PDO dengan <em>bind parameters</em>.</li>
+<li>Pengiriman email notifikasi dan verifikasi menggunakan layanan SMTP mandiri pada <code>app/services/EmailService.php</code>.</li>
+<li>Autentikasi sesi diverifikasi pada level controller menggunakan <code>Auth::requireRole(['customer', 'technician', 'admin'])</code>.</li>
+</ul>
+<h3 id="32-strategi-pengujian-otomatis-unit-testing-matrix">3.2 Strategi Pengujian Otomatis (<em>Unit Testing Matrix</em>)</h3>
+<p>Pengujian fungsionalitas sistem dilakukan secara komprehensif untuk memastikan aplikasi berjalan tanpa cacat logika:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Modul Uji</th>
+<th style="text-align: left;">Skenario Pengujian</th>
+<th style="text-align: left;">Masukan (<em>Input</em>)</th>
+<th style="text-align: left;">Ekspektasi Hasil (<em>Expected</em>)</th>
+<th style="text-align: center;">Status Hasil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Auth</strong></td>
+<td style="text-align: left;">Registrasi akun baru dengan nomor WhatsApp acak.</td>
+<td style="text-align: left;"><code>whatsapp = "0812-3456-7890"</code></td>
+<td style="text-align: left;">Nomor dinormalisasi menjadi <code>6281234567890</code>.</td>
+<td style="text-align: center;"><strong>PASS (100%)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Auth</strong></td>
+<td style="text-align: left;">Akses halaman Admin oleh akun Customer.</td>
+<td style="text-align: left;">URL <code>/admin/settings</code></td>
+<td style="text-align: left;">Sistem menolak akses dan me-redirect ke login/dashboard.</td>
+<td style="text-align: center;"><strong>PASS (100%)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AI Diagnosis</strong></td>
+<td style="text-align: left;">Pengunggahan foto kunci pintu patah ke endpoint konsultasi.</td>
+<td style="text-align: left;">Berkas gambar + teks keluhan</td>
+<td style="text-align: left;">AI mengembalikan kategori <code>Tukang Kunci</code> dan estimasi harga rasional.</td>
+<td style="text-align: center;"><strong>PASS (100%)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Chat Nego</strong></td>
+<td style="text-align: left;">Pengajuan harga Rp 100.000 pada keluhan berstatus aktif.</td>
+<td style="text-align: left;"><code>price = 100000</code></td>
+<td style="text-align: left;">Kartu penawaran harga muncul di ruang chat lawan bicara.</td>
+<td style="text-align: center;"><strong>PASS (100%)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Chat Nego</strong></td>
+<td style="text-align: left;">Upaya negosiasi pada order yang sudah berstatus <code>Selesai</code>.</td>
+<td style="text-align: left;">Klik Nego / POST API</td>
+<td style="text-align: left;">Tombol terkunci (<em>disabled</em>), API menolak permintaan dengan HTTP 422.</td>
+<td style="text-align: center;"><strong>PASS (100%)</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Database</strong></td>
+<td style="text-align: left;">Eksekusi parameter dengan karakter berbahaya SQL.</td>
+<td style="text-align: left;"><code>' OR 1=1 --</code></td>
+<td style="text-align: left;">Karakter diperlakukan sebagai literal string aman oleh PDO.</td>
+<td style="text-align: center;"><strong>PASS (100%)</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="33-otomatisasi-cicd-pipeline-github-actions">3.3 Otomatisasi CI/CD Pipeline GitHub Actions</h3>
+<p>Untuk memenuhi standar Tahap 3 pada rubrik kurikulum OBE, repositori dilengkapi alur otomatisasi <em>Continuous Integration</em> pada berkas <code>.github/workflows/ci.yml</code>:</p>
+<pre><code class="language-yaml">name: BANTUIN CI Pipeline
+
+on:
+  push:
+    branches: [ &quot;main&quot; ]
+  pull_request:
+    branches: [ &quot;main&quot; ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Source Code
+      uses: actions/checkout@v4
+
+    - name: Setup PHP Environment
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: mbstring, pdo, pdo_mysql, curl, json
+        coverage: none
+
+    - name: Syntax Linting (PHP Lint Check)
+      run: |
+        find app/ -type f -name &quot;*.php&quot; -exec php -l {} \;
+        find public/ -type f -name &quot;*.php&quot; -exec php -l {} \;
+
+    - name: Verify Clean Repository &amp; No Leak Secrets
+      run: |
+        if [ -f .env ]; then echo &quot;Error: .env file committed!&quot; &amp;&amp; exit 1; fi
+        echo &quot;Repository structure verified successfully.&quot;
+</code></pre>
+<hr />
+<h3 id="34-panduan-instalasi-environment-setup">3.4 Panduan Instalasi &amp; <em>Environment Setup</em></h3>
+<ol>
+<li><strong>Persyaratan Sistem:</strong></li>
+<li>Web Server Apache &amp; PHP versi $\ge$ 8.1.</li>
+<li>Database MySQL versi $\ge$ 5.7 atau MariaDB versi $\ge$ 10.4.</li>
+<li>Ekstensi PHP aktif: <code>pdo_mysql</code>, <code>curl</code>, <code>mbstring</code>, <code>openssl</code>.</li>
+<li><strong>Langkah Instalasi di Lingkungan XAMPP:</strong></li>
+<li>Kloning repositori ke direktori web server:<br />
+<code>bash
+     git clone https://github.com/yogafrma/PROJECT-BANTUIN-PLATFORM-JASA-RUMAH-TANGGA.git c:/xampp/htdocs/lat1c</code></li>
+<li>Impor basis data MySQL:<ul>
+<li>Buka <code>phpMyAdmin</code> dan buat database baru bernama <code>db_teknisi_rumah</code>.</li>
+<li>Impor berkas database yang berada di <code>app/config/database.sql</code>.</li>
+</ul>
+</li>
+<li>Buka peramban (<em>browser</em>) dan akses aplikasi melalui tautan:<br />
+<code>text
+     http://localhost/lat1c/public/</code></li>
+</ol>
+<hr />
+<h1 id="bagian-iv-kesimpulan-refleksi-pembelajaran-mandiri">BAGIAN IV: KESIMPULAN &amp; REFLEKSI PEMBELAJARAN MANDIRI</h1>
+<h3 id="41-kesimpulan-proyek">4.1 Kesimpulan Proyek</h3>
+<p>Proyek Akhir Mandiri Rekayasa Perangkat Lunak ini telah berhasil mewujudkan platform <strong>BANTUIN</strong> dari tahap konseptualisasi kebutuhan hingga menjadi perangkat lunak berbasis web fungsional penuh. Fitur diagnosis kerusakan AI yang dipadukan dengan kepastian harga melalui mekanisme <em>Deal Lock</em> pada ruang chat terbukti mampu mengatasi masalah asimetri informasi yang selama ini membebani masyarakat saat mencari teknisi rumah tangga.</p>
+<h3 id="42-refleksi-pembelajaran-mandiri-individual-ownership">4.2 Refleksi Pembelajaran Mandiri (<em>Individual Ownership</em>)</h3>
+<p>Pengerjaan proyek secara mandiri (<em>Full End-to-End Build</em>) ini memberikan pemahaman komprehensif bagi mahasiswa dalam:<br />
+- Mengidentifikasi masalah nyata masyarakat dan menuangkannya ke dalam dokumen spesifikasi kebutuhan standar industri (PRD/SRS).<br />
+- Memodelkan arsitektur perangkat lunak berorientasi objek yang rapi menggunakan 4 diagram UML terintegrasi.<br />
+- Mengimplementasikan konsep keamanan (<em>security hardening</em>) dan integrasi API AI modern (Google Gemini &amp; NVIDIA NIM) secara elegan dengan mempertimbangkan mekanisme mitigasi kegagalan (<em>fallback engine</em>).<br />
+- Menghadirkan kode yang bersih, terdokumentasi, serta siap diintegrasikan dengan siklus DevOps modern melalui GitHub Actions.</p>
+<hr />
+<p><em>Dokumen ini disusun secara mandiri sebagai luaran resmi pemenuhan syarat penilaian Proyek Akhir Mandiri Mata Kuliah Rekayasa Perangkat Lunak (TIKB2503021) — Program Studi S1 Teknik Informatika, STMIK IKMI Cirebon.</em></p>
+    </div>
+
+</body>
+</html>
