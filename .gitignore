@@ -18,6 +18,7 @@ public/uploads/consultations/*
 !public/uploads/consultations/.gitkeep
 
 # OS / Editor Files
+~$*
 .DS_Store
 Thumbs.db
 desktop.ini

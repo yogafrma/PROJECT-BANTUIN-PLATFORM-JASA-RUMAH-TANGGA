@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Progres 1: PRD BANTUIN - Yoga Fratama Fahdi Sardi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --brand-navy: #003049;
+            --brand-azure: #0078D4;
+            --brand-dark: #1E293B;
+            --brand-bg: #F8FAFC;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #0f172a;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            color: #1e293b;
+        }
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .slide {
+            width: 1280px;
+            height: 720px;
+            max-width: 96vw;
+            max-height: 94vh;
+            aspect-ratio: 16 / 9;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+            display: none;
+            flex-direction: column;
+            padding: 40px 55px;
+            position: relative;
+            box-sizing: border-box;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .slide.active {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.985); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .slide-header {
+            margin-bottom: 25px;
+        }
+        .slide-badge {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--brand-azure);
+            background: #EFF6FF;
+            border: 1px solid #BFDBFE;
+            padding: 4px 12px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .slide-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--brand-navy);
+            margin: 0;
+            line-height: 1.2;
+        }
+        .slide-subtitle {
+            font-size: 0.95rem;
+            color: #64748B;
+            margin-top: 4px;
+        }
+        .slide-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .feature-card {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 14px;
+            padding: 22px;
+            height: 100%;
+            transition: all 0.2s;
+        }
+        .feature-card.highlight-azure {
+            border-color: var(--brand-azure);
+            border-top: 4px solid var(--brand-azure);
+        }
+        .feature-card.highlight-green {
+            border-color: #10B981;
+            border-top: 4px solid #10B981;
+        }
+        .feature-card.highlight-navy {
+            border-color: var(--brand-navy);
+            border-top: 4px solid var(--brand-navy);
+        }
+        .feature-card h5 {
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            color: var(--brand-navy);
+        }
+        .feature-card p, .feature-card li {
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: #334155;
+        }
+
+        /* Slide 1 Cover */
+        .slide-cover {
+            background: linear-gradient(135deg, #002236 0%, #003049 100%);
+            color: #ffffff;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .slide-cover .badge-academic {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38BDF8;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* Controls & Script Drawer */
+        .nav-controls {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 18px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+            color: #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .slide-indicator {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        .script-drawer {
+            position: fixed;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1200px;
+            max-width: 90vw;
+            background: #ffffff;
+            border: 2px solid var(--brand-azure);
+            border-radius: 16px;
+            padding: 16px 22px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.35);
+            z-index: 99;
+            display: none;
+        }
+        .script-drawer.show {
+            display: block;
+        }
+        .script-title {
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--brand-azure);
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .script-text {
+            font-size: 0.95rem;
+            color: #1e293b;
+            line-height: 1.5;
+            margin: 0;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide-container">
+
+    <!-- =====================================================================
+         SLIDE 1: Cover & Academic Identity
+         ===================================================================== -->
+    <div class="slide slide-cover active" id="slide-1" data-script="[00:00 - 00:35] Assalamu’alaikum Warahmatullahi Wabarakatuh. Selamat pagi/siang kepada Bapak Dosen Pengampu, Bapak Yudhistira Arie Wijaya, M.Kom., CDS., dan rekan-rekan semuanya. Perkenalkan, saya Yoga Fratama Fahdi Sardi, NIM 41257243, mahasiswa S1 Teknik Informatika STMIK IKMI Cirebon. Pada kesempatan kali ini, saya mempresentasikan Progres 1 Rekayasa Perangkat Lunak, yaitu Dokumen PRD dan konsep dari aplikasi yang saya rancang secara mandiri, yaitu BANTUIN: Platform Jasa Perbaikan Rumah Tangga Berbasis Web dengan Integrasi Kecerdasan Artifisial (AI).">
+        <div>
+            <span class="badge-academic"><i class="bi bi-mortarboard-fill me-1"></i> PROYEK AKHIR MANDIRI REKAYASA PERANGKAT LUNAK (TIKB2503021) — SEMESTER 3</span>
+            <h1 class="display-3 fw-bold text-white mb-2" style="letter-spacing: -0.02em;">BANTU<span style="color: #38BDF8;">IN</span></h1>
+            <p class="fs-4 text-light mb-4" style="max-width: 900px; line-height: 1.35;">
+                Platform Layanan Jasa Perbaikan Rumah Tangga Berbasis Web dengan Integrasi Kecerdasan Artifisial (AI)
+            </p>
+            <div class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-4" style="font-size: 0.85rem;">
+                <i class="bi bi-clock-history me-1"></i> PRESENTASI PROGRES 1: DOKUMEN PRD & KONSEP APLIKASI (ESTIMASI 03:30 - 04:00 MENIT)
+            </div>
+            
+            <hr style="border-color: rgba(255,255,255,0.2); margin: 15px 0;">
+
+            <div class="row pt-2" style="font-size: 0.95rem;">
+                <div class="col-md-6 mb-2">
+                    <div class="text-white-50 small">Nama Mahasiswa & NIM:</div>
+                    <div class="fw-bold fs-5 text-white">Yoga Fratama Fahdi Sardi <span class="badge bg-info text-dark ms-2">NIM: 41257243 (Kelas 1C)</span></div>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <div class="text-white-50 small">Dosen Pengampu & Kampus:</div>
+                    <div class="fw-bold fs-5 text-white">Yudhistira Arie Wijaya, M.Kom., CDS. <span class="text-white-50 fs-6">| STMIK IKMI Cirebon</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         SLIDE 2: Latar Belakang Masalah Riil
+         ===================================================================== -->
+    <div class="slide" id="slide-2" data-script="[00:35 - 01:25] Bapak Dosen dan rekan-rekan sekalian, proyek ini dilatarbelakangi oleh permasalahan nyata yang sering dihadapi masyarakat perkotaan saat mengalami kerusakan darurat di rumah—seperti kunci pintu patah, korsleting listrik, atau AC yang tiba-tiba mati total. Ada tiga masalah utama di lapangan: Pertama, sulitnya menemukan teknisi yang terpercaya dan cepat tanggap tanpa harus keliling mencari bengkel fisik. Kedua, ketidakpastian biaya pengerjaan. Konsumen sering merasa was-was karena harga jasa kerap dimainkan atau tidak transparan di awal. Ketiga, ketidaktahuan konsumen mengenai jenis kerusakan, sehingga bingung harus memanggil teknisi spesialis apa dan berapa perkiraan biaya normalnya. Dari permasalahan inilah, hadir aplikasi BANTUIN sebagai solusi digital satu pintu.">
+        <div class="slide-header">
+            <span class="slide-badge">Tahap 1: Inisiasi & Konsep PRD</span>
+            <h2 class="slide-title">Latar Belakang & Identifikasi Masalah Riil</h2>
+            <div class="slide-subtitle">Tiga titik kritis (pain points) yang dialami masyarakat saat menghadapi kerusakan darurat di rumah.</div>
+        </div>
+        <div class="slide-body">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card highlight-azure">
+                        <div class="fs-1 text-primary mb-2"><i class="bi bi-cash-stack"></i></div>
+                        <h5>1. Asimetri Informasi & Biaya "Gelap"</h5>
+                        <p>Konsumen kerap merasa was-was karena ketiadaan patokan tarif pengerjaan standar. Ongkos perbaikan sering dimainkan atau membengkak sepihak setelah teknisi tiba di tempat.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card highlight-green">
+                        <div class="fs-1 text-success mb-2"><i class="bi bi-question-diamond-fill"></i></div>
+                        <h5>2. Ketidaktahuan Jenis Kerusakan</h5>
+                        <p>Masyarakat awam bingung mengidentifikasi spare part atau spesifikasi teknis kerusakan. Tidak tahu harus memanggil spesialis apa dan berapa perkiraan biaya normalnya.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card highlight-navy">
+                        <div class="fs-1 text-dark mb-2"><i class="bi bi-shield-x"></i></div>
+                        <h5>3. Tanpa Sistem Kesepakatan Resmi</h5>
+                        <p>Pencarian teknisi panggilan manual lewat media sosial tidak memiliki kontrak kerja transparan, ketiadaan mekanisme negosiasi harga tertulis, dan tanpa jaminan riwayat servis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         SLIDE 3: Solusi & Nilai Guna Aplikasi BANTUIN
+         ===================================================================== -->
+    <div class="slide" id="slide-3" data-script="[01:25 - 02:15] BANTUIN mentransformasikan pencarian teknisi menjadi ekosistem digital yang adil dan transparan. Dalam dokumen PRD yang saya susun, sistem melayani tiga aktor utama: Pertama, Customer: dapat berkonsultasi kerusakan via AI, membuat postingan keluhan, bernegosiasi harga resmi di ruang chat, hingga konfirmasi pembayaran. Kedua, Mitra Teknisi: menerima notifikasi keluhan sesuai bidang keahliannya (seperti teknisi listrik, AC, atau tukang kunci), memberikan penawaran biaya transparan, dan menyelesaikan pesanan. Ketiga, Super Admin: memantau seluruh metrik operasional, transaksi servis, manajemen akun pengguna, serta mengonfigurasi mesin AI secara terpusat. Nilai keunggulan BANTUIN terletak pada fitur kesepakatan harga atau Deal Lock, di mana nominal biaya dikunci sebelum pengerjaan selesai demi keamanan kedua belah pihak.">
+        <div class="slide-header">
+            <span class="slide-badge">Solusi & Nilai Guna</span>
+            <h2 class="slide-title">Ekosistem BANTUIN: Menghubungkan 3 Aktor Utama</h2>
+            <div class="slide-subtitle">Mentransformasikan layanan perbaikan rumah tangga menjadi transparan, aman, dan bergaransi.</div>
+        </div>
+        <div class="slide-body">
+            <div class="row g-3 mb-3">
+                <div class="col-md-4">
+                    <div class="feature-card border-primary">
+                        <h5 class="text-primary"><i class="bi bi-person-fill me-1"></i> Customer (Pelanggan)</h5>
+                        <ul class="ps-3 mb-0">
+                            <li>Upload foto & konsultasi kerusakan via AI instan.</li>
+                            <li>Buat postingan keluhan perbaikan ke feed teknisi.</li>
+                            <li>Ajukan dan terima negosiasi harga di ruang chat.</li>
+                            <li>Penyelesaian transaksi & cetak riwayat servis.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card border-success">
+                        <h5 class="text-success"><i class="bi bi-tools me-1"></i> Mitra Teknisi</h5>
+                        <ul class="ps-3 mb-0">
+                            <li>Melihat keluhan masuk sesuai kategori keahlian.</li>
+                            <li>Memberikan estimasi ongkos pengerjaan yang adil.</li>
+                            <li>Komunikasi privat & konfirmasi jadwal visit.</li>
+                            <li>Menerima pendapatan langsung dari customer.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card border-dark">
+                        <h5 class="text-dark"><i class="bi bi-shield-lock-fill me-1"></i> Super Administrator</h5>
+                        <ul class="ps-3 mb-0">
+                            <li>Memantau seluruh metrik operasional & transaksi.</li>
+                            <li>Manajemen kategori jasa (AC, Listrik, Kunci, dll).</li>
+                            <li>Pusat kendali multi-AI Engine (Gemini & NVIDIA).</li>
+                            <li>Manajemen akun & verifikasi mitra teknisi.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="p-3 rounded-4 bg-success bg-opacity-10 border border-success border-opacity-25 d-flex align-items-center gap-3">
+                <i class="bi bi-lock-fill fs-2 text-success"></i>
+                <div>
+                    <strong class="text-success">FITUR UNGGULAN: DEAL LOCK (KESEPAKATAN HARGA RESMI)</strong>
+                    <div class="small text-dark">Nominal biaya pengerjaan disepakati di ruang chat dan <strong>DIKUNCI secara digital</strong> sebelum transaksi ditutup demi keamanan kedua belah pihak.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         SLIDE 4: Kebutuhan Sistem (PRD: Fungsional & Non-Fungsional)
+         ===================================================================== -->
+    <div class="slide" id="slide-4" data-script="[02:15 - 03:05] Secara spesifikasi rekayasa, kebutuhan fungsional utama yang didefinisikan dalam dokumen PRD mencakup: Sistem autentikasi berbasis peran (RBAC) yang aman, Modul konsultasi diagnosis kerusakan otomatis, Sistem posting keluhan dan penawaran teknisi, Modul Live Chat internal dengan fitur negosiasi dan persetujuan harga resmi, Serta pencatatan riwayat transaksi dan invoice digital. Sedangkan dari sisi Kebutuhan Non-Fungsional, aplikasi ini dirancang berbasis arsitektur Clean PHP MVC, menggunakan database MySQL dengan PDO Prepared Statements untuk mencegah celah SQL Injection, tampilan antarmuka responsif Bootstrap 5 Fluent, serta latensi respons API yang cepat di bawah 2 detik.">
+        <div class="slide-header">
+            <span class="slide-badge">Spesifikasi Kebutuhan PRD</span>
+            <h2 class="slide-title">Kebutuhan Fungsional & Non-Fungsional Sistem</h2>
+            <div class="slide-subtitle">Standar kebutuhan perangkat lunak berbasis kaidah rekayasa IEEE 830 / ISO 29148.</div>
+        </div>
+        <div class="slide-body">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="feature-card border-primary" style="background: #ffffff;">
+                        <h5 class="text-primary"><i class="bi bi-card-checklist me-1"></i> Kebutuhan Fungsional (Functional)</h5>
+                        <ul class="ps-3 mb-0" style="font-size: 0.88rem;">
+                            <li class="mb-2"><strong>REQ-F01:</strong> Autentikasi RBAC (Customer, Teknisi, Admin) & Session Guard.</li>
+                            <li class="mb-2"><strong>REQ-F02:</strong> Modul Konsultasi AI Kerusakan (Upload foto + Kronologi).</li>
+                            <li class="mb-2"><strong>REQ-F03:</strong> Manajemen Permintaan Jasa Servis & Filter Kategori.</li>
+                            <li class="mb-2"><strong>REQ-F04:</strong> Live Chat privat interaktif (1-Screen Viewport Locked Layout).</li>
+                            <li class="mb-2"><strong>REQ-F05:</strong> Negosiasi harga resmi di chat (Ajukan, Terima Deal, Tolak).</li>
+                            <li><strong>REQ-F06:</strong> Konfirmasi Pembayaran Selesai (Cash/QRIS) & Riwayat Transaksi.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card border-indigo" style="background: #ffffff; border-color: #6366F1;">
+                        <h5 style="color: #4F46E5;"><i class="bi bi-shield-check me-1"></i> Kebutuhan Non-Fungsional (Kualitas Rekayasa)</h5>
+                        <ul class="ps-3 mb-0" style="font-size: 0.88rem;">
+                            <li class="mb-2"><strong>NFR-01 (Arsitektur):</strong> Pola Clean PHP MVC murni (Separation of Concerns).</li>
+                            <li class="mb-2"><strong>NFR-02 (Keamanan):</strong> Anti-SQL Injection via PDO Prepared Statements.</li>
+                            <li class="mb-2"><strong>NFR-03 (Proteksi Web):</strong> Anti-CSRF Token & Anti-XSS (HTML Sanitization).</li>
+                            <li class="mb-2"><strong>NFR-04 (Keandalan):</strong> Password Bcrypt Hash & Validasi Unik Email/WA.</li>
+                            <li class="mb-2"><strong>NFR-05 (Ketersediaan):</strong> Contextual Heuristic AI Fallback (Zero crash).</li>
+                            <li><strong>NFR-06 (Usabilitas):</strong> Microsoft Fluent 2 Azure UI responsif desktop & mobile.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         SLIDE 5: Peran Strategis Fitur AI
+         ===================================================================== -->
+    <div class="slide" id="slide-5" data-script="[03:05 - 03:40] Sesuai dengan standar kurikulum OBE pada mata kuliah ini, integrasi AI pada BANTUIN bukan sekadar tempelan atau gimmick, melainkan menjadi fitur inti pemecah masalah, yaitu: Pertama, AI Damage Diagnosis & Cost Estimator: Konsumen cukup mengunggah foto dan menceritakan kronologi kerusakan. Mesin AI secara cerdas menganalisis potensi kerusakan, merekomendasikan kategori teknisi yang tepat, dan memberikan rentang estimasi biaya wajar. Kedua, Chatbot AI 24 Jam: Asisten cerdas di beranda yang siap menjawab panduan layanan secara interaktif. Ketiga, Multi-Model Engine: Sistem BANTUIN dirancang fleksibel mendukung provider AI terkemuka seperti Google Gemini dan akselerasi GPU NVIDIA NIM.">
+        <div class="slide-header">
+            <span class="slide-badge">Kecerdasan Artifisial</span>
+            <h2 class="slide-title">Peran Strategis Fitur AI (Bukan Sekadar Gimmick)</h2>
+            <div class="slide-subtitle">Mengintegrasikan Computer Vision dan Large Language Model untuk efisiensi operasional.</div>
+        </div>
+        <div class="slide-body">
+            <div class="d-flex flex-column gap-3">
+                <div class="feature-card highlight-azure py-3">
+                    <h5 class="mb-1 text-primary"><i class="bi bi-camera-fill me-2"></i>1. AI Damage Diagnosis & Cost Estimator</h5>
+                    <p class="mb-0">Konsumen mengunggah foto kerusakan + teks kronologi. AI secara multimodal menganalisis probabilitas kerusakan fisik, menyarankan kategori teknisi spesialis, dan menghitung estimasi rentang biaya servis yang wajar (Rp Min – Rp Max).</p>
+                </div>
+                <div class="feature-card highlight-green py-3">
+                    <h5 class="mb-1 text-success"><i class="bi bi-robot me-2"></i>2. Chatbot AI Assistant 24 Jam</h5>
+                    <p class="mb-0">Asisten percakapan cerdas yang standby di landing page selama 24 jam untuk menjawab pertanyaan seputar estimasi tarif, garansi layanan 30 hari, serta panduan alur pemesanan secara interaktif.</p>
+                </div>
+                <div class="feature-card highlight-navy py-3">
+                    <h5 class="mb-1 text-dark"><i class="bi bi-cpu-fill me-2"></i>3. Arsitektur Multi-Model (Gemini & NVIDIA NIM)</h5>
+                    <p class="mb-0">Mendukung pergantian fleksibel antara Google Gemini 1.5 Flash dan akselerasi GPU NVIDIA NIM (Mistral Large & Nemotron). Dilengkapi Contextual Expert Heuristic Fallback agar sistem tetap 100% aktif jika kuota cloud habis.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         SLIDE 6: Kesimpulan & Roadmap SDD
+         ===================================================================== -->
+    <div class="slide" id="slide-6" data-script="[03:40 - 04:00] Sebagai kesimpulan, Dokumen PRD ini telah menjadi landasan spesifikasi kebutuhan yang jelas dan terukur untuk pembangunan aplikasi BANTUIN. Pada tahap selanjutnya, saya akan melanjutkan ke perancangan arsitektur dan pemodelan 4 Diagram UML Utama pada Dokumen SDD. Demikian presentasi Progres 1 ini saya sampaikan. Terima kasih banyak atas perhatian Bapak Dosen dan rekan-rekan. Wassalamu’alaikum Warahmatullahi Wabarakatuh.">
+        <div class="slide-header">
+            <span class="slide-badge">Penutup & Langkah Selanjutnya</span>
+            <h2 class="slide-title">Kesimpulan PRD & Roadmap Menuju SDD (Tahap 2)</h2>
+            <div class="slide-subtitle">Validasi spesifikasi kebutuhan mandiri siap dilanjutkan ke perancangan arsitektur UML.</div>
+        </div>
+        <div class="slide-body">
+            <div class="p-4 rounded-4 bg-white border border-2 border-success shadow-sm mb-3">
+                <h5 class="fw-bold text-success mb-3"><i class="bi bi-patch-check-fill me-2"></i>Capaian Luaran Progres 1 (Tahap Inisiasi PRD):</h5>
+                <ul class="ps-3 mb-0" style="font-size: 1.05rem; line-height: 1.8;">
+                    <li><strong>Identifikasi Masalah & Solusi Jelas:</strong> BANTUIN memecahkan asimetri informasi dan ketidakpastian biaya servis secara terukur.</li>
+                    <li><strong>Kebutuhan Fungsional & Non-Fungsional Terstandarisasi:</strong> Mematuhi kaidah IEEE 830 / ISO 29148 dengan 9 User Stories.</li>
+                    <li><strong>Fitur AI Berdampak Tinggi:</strong> Diagnosis foto kerusakan dan chatbot 24 jam memberikan nilai guna langsung.</li>
+                    <li><strong>Kesiapan Menuju Tahap 2 (SDD):</strong> Landasan kebutuhan siap dimodelkan ke dalam <strong>4 Diagram UML Utama</strong> (Use Case, Activity, Class SOLID, Sequence Diagram) serta Prototipe Figma.</li>
+                </ul>
+            </div>
+            <div class="text-center pt-2">
+                <h4 class="fw-bold text-primary mb-1">Terima Kasih atas Perhatian Bapak Dosen Pengampu & Rekan Mahasiswa</h4>
+                <div class="text-muted small">Yoga Fratama Fahdi Sardi — NIM 41257243 | S1 Teknik Informatika STMIK IKMI Cirebon</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Bottom Navigation Controls -->
+<div class="nav-controls">
+    <button class="nav-btn" id="prevBtn" title="Slide Sebelumnya (Panah Kiri)"><i class="bi bi-chevron-left"></i></button>
+    <span class="slide-indicator" id="slideIndicator">1 / 6</span>
+    <button class="nav-btn" id="nextBtn" title="Slide Berikutnya (Panah Kanan)"><i class="bi bi-chevron-right"></i></button>
+    <button class="nav-btn ms-2" id="toggleScriptBtn" title="Tampilkan/Sembunyikan Naskah Script (Tombol S)"><i class="bi bi-file-earmark-text"></i> <span style="font-size: 0.8rem;">Naskah</span></button>
+    <button class="nav-btn" id="fullscreenBtn" title="Layar Penuh (F11)"><i class="bi bi-arrows-fullscreen"></i></button>
+</div>
+
+<!-- Floating Script Drawer -->
+<div class="script-drawer" id="scriptDrawer">
+    <div class="script-title">
+        <span><i class="bi bi-mic-fill me-1"></i> Naskah Narasi Slide Ini:</span>
+        <span class="text-muted" style="cursor: pointer;" id="closeScriptBtn">&times; Tutup</span>
+    </div>
+    <p class="script-text" id="scriptText">Naskah akan muncul di sini...</p>
+</div>
+
+<script>
+    let currentSlide = 1;
+    const totalSlides = 6;
+
+    const slides = document.querySelectorAll('.slide');
+    const indicator = document.getElementById('slideIndicator');
+    const scriptDrawer = document.getElementById('scriptDrawer');
+    const scriptText = document.getElementById('scriptText');
+
+    function updateSlide() {
+        slides.forEach((s, idx) => {
+            if (idx + 1 === currentSlide) {
+                s.classList.add('active');
+                scriptText.innerText = s.getAttribute('data-script') || '';
+            } else {
+                s.classList.remove('active');
+            }
+        });
+        indicator.innerText = `${currentSlide} / ${totalSlides}`;
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        if (currentSlide > 1) {
+            currentSlide--;
+            updateSlide();
+        }
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        if (currentSlide < totalSlides) {
+            currentSlide++;
+            updateSlide();
+        }
+    });
+
+    document.getElementById('toggleScriptBtn').addEventListener('click', () => {
+        scriptDrawer.classList.toggle('show');
+    });
+
+    document.getElementById('closeScriptBtn').addEventListener('click', () => {
+        scriptDrawer.classList.remove('show');
+    });
+
+    document.getElementById('fullscreenBtn').addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+            document.exitFullscreen().catch(() => {});
+        }
+    });
+
+    // Keyboard Shortcuts (Arrow Left/Right, Space, S for script)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlide();
+            }
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlide();
+            }
+        } else if (e.key.toLowerCase() === 's') {
+            scriptDrawer.classList.toggle('show');
+        }
+    });
+
+    // Initial load
+    updateSlide();
+</script>
+
+</body>
+</html>

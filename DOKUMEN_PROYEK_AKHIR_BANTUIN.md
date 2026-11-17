@@ -1,4 +1,4 @@
-# DOKUMEN TUGAS PROYEK AKHIR MANDIRI
+    # DOKUMEN TUGAS PROYEK AKHIR MANDIRI
 ## REKAYASA PERANGKAT LUNAK (TIKB2503021) — SEMESTER 3
 ### PROGRAM STUDI S1 TEKNIK INFORMATIKA — STMIK IKMI CIREBON
 
@@ -13,7 +13,7 @@
 - **Mata Kuliah / Kode:** Rekayasa Perangkat Lunak / TIKB2503021 (4 SKS: 2 Teori + 2 Praktik)
 - **Dosen Pengampu:** Yudhistira Arie Wijaya, M.Kom., CDS.
 - **Tautan Repositori GitHub:** [https://github.com/yogafrma/PROJECT-BANTUIN-PLATFORM-JASA-RUMAH-TANGGA](https://github.com/yogafrma/PROJECT-BANTUIN-PLATFORM-JASA-RUMAH-TANGGA)
-- **Tautan Video Progres 1 (PRD):** *(Sematkan Link YouTube/Google Drive Anda di sini)*
+- **Tautan Video Progres 1 (PRD & Konsep Aplikasi):** [https://youtu.be/EDChMg5fP7E](https://youtu.be/EDChMg5fP7E)
 - **Tautan Video Progres 2 (UML & UI/UX):** *(Sematkan Link YouTube/Google Drive Anda di sini)*
 - **Tautan Video Final (Live Demo & CI/CD):** *(Sematkan Link YouTube/Google Drive Anda di sini)*
 
