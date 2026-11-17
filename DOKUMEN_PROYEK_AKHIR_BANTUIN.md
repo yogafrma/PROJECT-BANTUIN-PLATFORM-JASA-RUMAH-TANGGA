@@ -15,7 +15,7 @@
 - **Tautan Repositori GitHub:** [https://github.com/yogafrma/PROJECT-BANTUIN-PLATFORM-JASA-RUMAH-TANGGA](https://github.com/yogafrma/PROJECT-BANTUIN-PLATFORM-JASA-RUMAH-TANGGA)
 - **Tautan Video Progres 1 (PRD & Konsep Aplikasi):** [https://youtu.be/EDChMg5fP7E](https://youtu.be/EDChMg5fP7E)
 - **Tautan Video Progres 2 (UML & UI/UX):** [https://youtu.be/DvSUCWPcI6Q](https://youtu.be/DvSUCWPcI6Q)
-- **Tautan Video Final (Live Demo & CI/CD):** *(Sematkan Link YouTube/Google Drive Anda di sini)*
+- **Tautan Video Final (Live Demo & CI/CD):** [https://youtu.be/vljBlnMVWDY](https://youtu.be/vljBlnMVWDY)
 
 ---
 

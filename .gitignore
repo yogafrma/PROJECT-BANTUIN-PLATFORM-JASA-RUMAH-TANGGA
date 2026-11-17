@@ -5,6 +5,7 @@
 
 # Application Storage & Local Settings
 app/storage/settings.json
+app/storage/logs/*.log
 storage/logs/*.log
 storage/cache/*
 
