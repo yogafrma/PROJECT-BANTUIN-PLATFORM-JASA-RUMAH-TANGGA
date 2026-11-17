@@ -12,7 +12,7 @@
 
 ## 🎬 Tautan Video Presentasi Proyek (OBE Deliverables)
 1. **Video Progres 1 (PRD & Konsep Aplikasi):** [Tonton Video Progres 1 di YouTube (https://youtu.be/EDChMg5fP7E)](https://youtu.be/EDChMg5fP7E)
-2. **Video Progres 2 (Pemodelan UML & UI/UX Figma - Durasi 5–7 Menit):** [Tautan Video Progres 2 (YouTube/Drive)](#)
+2. **Video Progres 2 (Pemodelan UML & UI/UX Figma):** [Tonton Video Progres 2 di YouTube (https://youtu.be/DvSUCWPcI6Q)](https://youtu.be/DvSUCWPcI6Q)
 3. **Video Final (Live Demo Aplikasi Web & Sistem AI - Durasi 8–12 Menit):** [Tautan Video Final Demo (YouTube/Drive)](#)
 
 ---
