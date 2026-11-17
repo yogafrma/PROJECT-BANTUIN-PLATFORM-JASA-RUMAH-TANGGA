@@ -25,3 +25,9 @@ desktop.ini
 .idea/
 *.sublime-project
 *.sublime-workspace
+
+# External Courses / Jupyter Notebooks
+*.ipynb
+tugas_ilmu_data/
+*.csv
+

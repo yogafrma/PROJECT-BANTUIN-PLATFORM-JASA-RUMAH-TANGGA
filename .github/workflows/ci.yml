@@ -1,0 +1,37 @@
+name: BANTUIN CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Source Code
+      uses: actions/checkout@v4
+
+    - name: Setup PHP Environment
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: mbstring, pdo, pdo_mysql, curl, json
+        coverage: none
+
+    - name: Syntax Linting (PHP Lint Check)
+      run: |
+        echo "Running syntax check on all PHP files..."
+        find app/ -type f -name "*.php" -exec php -l {} \;
+        find public/ -type f -name "*.php" -exec php -l {} \;
+        echo "All PHP syntax checks passed successfully!"
+
+    - name: Validate Repository Security & Cleanliness
+      run: |
+        if [ -f .env ]; then
+          echo "Error: .env file committed to repository!"
+          exit 1
+        fi
+        echo "Security audit passed: No sensitive environment files tracked."

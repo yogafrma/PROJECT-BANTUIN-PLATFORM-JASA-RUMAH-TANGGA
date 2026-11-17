@@ -1,10 +1,23 @@
-# Teknisi Rumah Tangga (MVP) - Custom PHP MVC
+# BANTUIN — Platform Layanan Jasa Perbaikan Rumah Tangga Berbasis Web & AI
+### Tugas Proyek Akhir Mandiri Rekayasa Perangkat Lunak (TIKB2503021) — Semester 3
+**Program Studi S1 Teknik Informatika — STMIK IKMI Cirebon**
 
-Platform web yang mempertemukan **Customer** dengan **Teknisi Rumah Tangga** profesional dan tersertifikasi.
+- **Nama Mahasiswa:** Yoga Fratama Fahdi Sardi
+- **NIM:** 41257243
+- **Kelas:** 1C (2025)
+- **Dosen Pengampu:** Yudhistira Arie Wijaya, M.Kom., CDS.
+- **Dokumen Lengkap Proyek (PRD + SDD UML + Testing):** [DOKUMEN_PROYEK_AKHIR_BANTUIN.md](DOKUMEN_PROYEK_AKHIR_BANTUIN.md)
 
 ---
 
-## 🚀 Fitur & Lingkup Implementasi
+## 🎬 Tautan Video Presentasi Proyek (OBE Deliverables)
+1. **Video Progres 1 (PRD & Konsep Aplikasi - Durasi 3–5 Menit):** [Tautan Video Progres 1 (YouTube/Drive)](#)
+2. **Video Progres 2 (Pemodelan UML & UI/UX Figma - Durasi 5–7 Menit):** [Tautan Video Progres 2 (YouTube/Drive)](#)
+3. **Video Final (Live Demo Aplikasi Web & Sistem AI - Durasi 8–12 Menit):** [Tautan Video Final Demo (YouTube/Drive)](#)
+
+---
+
+## 🚀 Fitur & Lingkup Implementasi BANTUIN
 
 - **Arsitektur:** Custom PHP MVC murni (tanpa framework eksternal).
 - **Frontend:** HTML5, CSS3 kustom modern, Bootstrap 5.3, Bootstrap Icons, Google Fonts.
