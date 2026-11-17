@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Progres 2 - SDD UML & UI/UX BANTUIN (Yoga Fratama Fahdi Sardi)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Mermaid.js for Rendering Diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#E0F2FE',
+                primaryTextColor: '#0F172A',
+                primaryBorderColor: '#0284C7',
+                lineColor: '#0369A1',
+                secondaryColor: '#F0FDF4',
+                tertiaryColor: '#FEF3C7'
+            }
+        });
+    </script>
+    <style>
+        :root {
+            --navy: #003049;
+            --azure: #0078D4;
+            --azure-hover: #0067B8;
+            --dark: #1E293B;
+            --muted: #64748B;
+            --light-bg: #F8FAFC;
+            --border: #E2E8F0;
+            --green: #10B981;
+            --amber: #F59E0B;
+            --purple: #7C3AED;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #09131C;
+            color: var(--dark);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            user-select: none;
+        }
+
+        /* Top Bar */
+        .topbar {
+            height: 52px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            color: #fff;
+            z-index: 100;
+        }
+
+        .topbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: -0.3px;
+        }
+
+        .topbar-brand span.badge-progres {
+            background: linear-gradient(135deg, #0078D4, #00B7C3);
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .topbar-center {
+            font-size: 13px;
+            color: #94A3B8;
+            font-weight: 500;
+        }
+
+        .topbar-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-ctrl {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-ctrl:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-ctrl.active {
+            background: var(--azure);
+            border-color: var(--azure);
+        }
+
+        /* Slide Container 16:9 */
+        .stage {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .slide-frame {
+            width: 100%;
+            max-width: 1280px;
+            aspect-ratio: 16 / 9;
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            padding: 40px 52px;
+            display: none;
+            flex-direction: column;
+            background: #ffffff;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.995); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Slide 1 Theme */
+        .slide-hero {
+            background: radial-gradient(circle at top right, #004870 0%, #002238 60%, #001726 100%);
+            color: #fff;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 60px 70px;
+        }
+
+        .tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #EFF6FF;
+            color: var(--azure);
+            border: 1px solid #BFDBFE;
+            padding: 4px 14px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .slide-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--navy);
+            letter-spacing: -0.5px;
+            line-height: 1.25;
+            margin-bottom: 6px;
+        }
+
+        .slide-sub {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        /* Grid Cards */
+        .card-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            flex: 1;
+        }
+
+        .card-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .feature-card {
+            background: var(--light-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .feature-card.highlight-azure {
+            border-top: 4px solid var(--azure);
+            background: #fff;
+        }
+
+        .feature-card.highlight-green {
+            border-top: 4px solid var(--green);
+            background: #fff;
+        }
+
+        .feature-card.highlight-navy {
+            border-top: 4px solid var(--navy);
+            background: #fff;
+        }
+
+        .feature-card.highlight-purple {
+            border-top: 4px solid var(--purple);
+            background: #fff;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-body-text {
+            font-size: 12px;
+            color: var(--dark);
+            line-height: 1.55;
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .bullet-list li {
+            font-size: 11.5px;
+            color: #334155;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            line-height: 1.45;
+        }
+
+        .bullet-list li i {
+            color: var(--azure);
+            font-size: 12px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        /* Diagram Box */
+        .diagram-container {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            overflow-x: auto;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .diagram-container .mermaid {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Speaker Notes Drawer */
+        .notes-drawer {
+            position: absolute;
+            right: 0;
+            top: 52px;
+            bottom: 50px;
+            width: 440px;
+            background: #0F172A;
+            border-left: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: -10px 0 25px rgba(0, 0, 0, 0.4);
+            color: #F8FAFC;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 90;
+            padding: 24px;
+        }
+
+        .notes-drawer.open {
+            transform: translateX(0);
+        }
+
+        .notes-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 16px;
+        }
+
+        .notes-title {
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #38BDF8;
+        }
+
+        .notes-time {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(56, 189, 248, 0.15);
+            color: #38BDF8;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .notes-body {
+            flex: 1;
+            overflow-y: auto;
+            font-size: 13.5px;
+            line-height: 1.7;
+            color: #E2E8F0;
+            white-space: pre-wrap;
+            font-weight: 400;
+        }
+
+        .notes-body p {
+            margin-bottom: 14px;
+        }
+
+        .notes-body strong {
+            color: #F8FAFC;
+            font-weight: 700;
+        }
+
+        /* Bottom Controls */
+        .bottom-bar {
+            height: 50px;
+            background: #0B131E;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            color: #94A3B8;
+            font-size: 12px;
+            z-index: 100;
+        }
+
+        .nav-btn-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-nav {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            background: var(--azure);
+            border-color: var(--azure);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .keyboard-hint {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 11px;
+            color: #64748B;
+        }
+
+        .kbd {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #E2E8F0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <header class="topbar">
+        <div class="topbar-brand">
+            <i class="bi bi-diagram-3-fill text-info"></i>
+            <span>BANTUIN</span>
+            <span class="badge-progres">PROGRES 2 (SDD UML & UI/UX)</span>
+        </div>
+        <div class="topbar-center">
+            Rekayasa Perangkat Lunak &bull; STMIK IKMI Cirebon &bull; Dosen: Yudhistira Arie Wijaya, M.Kom., CDS.
+        </div>
+        <div class="topbar-controls">
+            <button id="toggleNotesBtn" class="btn-ctrl" title="Buka/Tutup Skrip Catatan Presenter (Hotkey: S)">
+                <i class="bi bi-chat-square-quote-fill"></i>
+                <span>Skrip Pembicara</span>
+                <span class="kbd">S</span>
+            </button>
+            <button id="fullscreenBtn" class="btn-ctrl" title="Fullscreen (Hotkey: F11)">
+                <i class="bi bi-arrows-fullscreen"></i>
+                <span>Fullscreen</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Presentation Stage -->
+    <main class="stage">
+        <div class="slide-frame">
+
+            <!-- ==========================================
+                 SLIDE 1: Title & Academic Identity
+                 ========================================== -->
+            <div class="slide slide-hero active" data-time="00:00 - 00:40">
+                <span class="tag-pill" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; border-color: rgba(56, 189, 248, 0.3);">
+                    <i class="bi bi-shield-check"></i> TAHAP 2 SDLC &bull; SOFTWARE DESIGN DOCUMENT (SDD)
+                </span>
+                <h1 style="font-size: 42px; font-weight: 800; color: #fff; margin-bottom: 8px; letter-spacing: -1px;">
+                    BANTU<span style="color: #38BDF8;">IN</span>
+                </h1>
+                <h2 style="font-size: 18px; font-weight: 500; color: #CBD5E1; margin-bottom: 24px; max-width: 860px; line-height: 1.5;">
+                    Pemodelan 4 Diagram UML Utama (Use Case, Activity, Class SOLID, Sequence Diagram) serta Prototipe Antarmuka UI/UX
+                </h2>
+                
+                <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px; padding: 18px 24px; max-width: 820px; width: 100%;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; font-size: 13px;">
+                        <div><strong style="color: #94A3B8;">Nama Mahasiswa:</strong> <span style="color: #fff; font-weight: 600;">Yoga Fratama Fahdi Sardi</span></div>
+                        <div><strong style="color: #94A3B8;">Program Studi:</strong> <span style="color: #fff;">S1 Teknik Informatika</span></div>
+                        <div><strong style="color: #94A3B8;">NIM / Kelas:</strong> <span style="color: #38BDF8; font-weight: 700;">41257243 (Kelas 1C - 2025)</span></div>
+                        <div><strong style="color: #94A3B8;">Dosen Pengampu:</strong> <span style="color: #fff;">Yudhistira Arie Wijaya, M.Kom., CDS.</span></div>
+                        <div><strong style="color: #94A3B8;">Institusi:</strong> <span style="color: #fff;">STMIK IKMI Cirebon</span></div>
+                        <div><strong style="color: #94A3B8;">Bobot Penilaian:</strong> <span style="color: #34D399; font-weight: 700;">30% dari Total Nilai Video (OBE)</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 SLIDE 2: Diagram UML 1: Use Case Diagram
+                 ========================================== -->
+            <div class="slide" data-time="00:40 - 01:45">
+                <span class="tag-pill"><i class="bi bi-diagram-2"></i> DIAGRAM UML 1 &bull; USE CASE DIAGRAM</span>
+                <h2 class="slide-title">Use Case Diagram: 4 Aktor & Batasan Sistem</h2>
+                <p class="slide-sub">Memetakan 10 fungsionalitas inti antara 3 aktor primer dan 1 aktor sekunder (Sistem AI).</p>
+
+                <div class="card-grid-2">
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div class="feature-card highlight-azure" style="padding: 14px;">
+                            <div class="card-title" style="font-size: 13.5px;"><i class="bi bi-person-fill text-primary"></i> Customer (Pelanggan)</div>
+                            <p class="card-body-text" style="font-size: 11.5px;">Registrasi/Login, Konsultasi AI Kerusakan, Buat Postingan Keluhan, Chat Real-time & Nego Harga, Konfirmasi Selesai & Bayar.</p>
+                        </div>
+                        <div class="feature-card highlight-green" style="padding: 14px;">
+                            <div class="card-title" style="font-size: 13.5px;"><i class="bi bi-wrench-adjustable text-success"></i> Mitra Teknisi</div>
+                            <p class="card-body-text" style="font-size: 11.5px;">Eksplorasi feed keluhan per kategori, ajukan tawaran biaya di ruang chat, sepakati Deal Lock, dan selesaikan pesanan servis.</p>
+                        </div>
+                        <div class="feature-card highlight-navy" style="padding: 14px;">
+                            <div class="card-title" style="font-size: 13.5px;"><i class="bi bi-shield-lock-fill text-dark"></i> Super Administrator</div>
+                            <p class="card-body-text" style="font-size: 11.5px;">Monitoring metrik sistem harian, kelola master kategori perbaikan, verifikasi pengguna, dan switch mesin AI (NVIDIA/Gemini).</p>
+                        </div>
+                        <div class="feature-card" style="border-top: 4px solid var(--amber); background: #fff; padding: 14px;">
+                            <div class="card-title" style="font-size: 13.5px;"><i class="bi bi-robot text-warning"></i> Sistem AI (Secondary Actor)</div>
+                            <p class="card-body-text" style="font-size: 11.5px;">Melayani request multimodal vision inferensi foto kerusakan, estimasi biaya wajar, dan bot asisten 24 jam.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card" style="background: #F8FAFC; border: 1px solid var(--border);">
+                        <div class="card-title" style="color: var(--navy); margin-bottom: 6px;">
+                            <i class="bi bi-journal-text text-primary"></i> Skenario Use Case Utama (Deal Lock)
+                        </div>
+                        <div style="font-size: 11.5px; line-height: 1.6; color: #334155;">
+                            <p><strong>1. Pre-Condition:</strong> Customer & Teknisi telah memiliki akun terverifikasi dan aktif di platform.</p>
+                            <p><strong>2. Konsultasi AI:</strong> Customer unggah foto kerusakan fisik. AI memberikan rekomendasi kategori dan estimasi biaya Rp Min - Max.</p>
+                            <p><strong>3. Penerbitan Keluhan:</strong> Keluhan diterbitkan ke feed spesialis teknisi.</p>
+                            <p><strong>4. Nego di Chat:</strong> Teknisi & Customer bernegosiasi via modal Nego Harga.</p>
+                            <p><strong>5. Deal Lock:</strong> Tawaran disetujui, harga resmi dikunci secara digital oleh sistem.</p>
+                            <p><strong>6. Post-Condition:</strong> Pekerjaan tuntas, pembayaran dikonfirmasi, transaksi tercatat di database.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 SLIDE 3: Diagram UML 2: Activity Diagram
+                 ========================================== -->
+            <div class="slide" data-time="01:45 - 02:45">
+                <span class="tag-pill"><i class="bi bi-activity"></i> DIAGRAM UML 2 &bull; ACTIVITY DIAGRAM</span>
+                <h2 class="slide-title">Activity Diagram: Alur Eksekusi AI & Negosiasi Deal Lock</h2>
+                <p class="slide-sub">Menggambarkan alur logika bisnis end-to-end, percabangan fallback cerdas, dan siklus transaksi.</p>
+
+                <div class="card-grid-3">
+                    <div class="feature-card highlight-azure">
+                        <div class="card-title"><i class="bi bi-cpu-fill text-primary"></i> 1. Diagnosa AI & Fallback</div>
+                        <ul class="bullet-list">
+                            <li><i class="bi bi-arrow-right-short"></i> Customer upload foto & deskripsi.</li>
+                            <li><i class="bi bi-arrow-right-short"></i> Sistem mengecek ketersediaan API key & internet.</li>
+                            <li><i class="bi bi-arrow-right-short"></i> <strong>Jalur A:</strong> Inferensi Gemini / NVIDIA NIM.</li>
+                            <li><i class="bi bi-arrow-right-short"></i> <strong>Jalur B:</strong> Contextual Heuristic Fallback (Zero Crash).</li>
+                            <li><i class="bi bi-arrow-right-short"></i> Output kartu estimasi harga Rp Min - Max.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card highlight-green">
+                        <div class="card-title"><i class="bi bi-chat-dots-fill text-success"></i> 2. Feed & Chat Negosiasi</div>
+                        <ul class="bullet-list">
+                            <li><i class="bi bi-arrow-right-short"></i> Postingan masuk feed kategori teknisi.</li>
+                            <li><i class="bi bi-arrow-right-short"></i> Teknisi membuka ruang percakapan privat.</li>
+                            <li><i class="bi bi-arrow-right-short"></i> Ajukan tawaran harga resmi lewat modal.</li>
+                            <li><i class="bi bi-arrow-right-short"></i> <strong>Kondisi Tolak:</strong> Siklus tawar kembali.</li>
+                            <li><i class="bi bi-arrow-right-short"></i> <strong>Kondisi Terima:</strong> Penguncian nominal (Deal Locked).</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card highlight-navy">
+                        <div class="card-title"><i class="bi bi-check2-circle text-info"></i> 3. Pengerjaan & Selesai</div>
+                        <ul class="bullet-list">
+                            <li><i class="bi bi-arrow-right-short"></i> Teknisi datang & melakukan perbaikan fisik.</li>
+                            <li><i class="bi bi-arrow-right-short"></i> Pelanggan konfirmasi bayar (Cash / QRIS).</li>
+                            <li><i class="bi bi-arrow-right-short"></i> Status transaksi berubah menjadi 'Selesai'.</li>
+                            <li><i class="bi bi-arrow-right-short"></i> Generate faktur riwayat transaksi permanen.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 SLIDE 4: Diagram UML 3: Class Diagram (SOLID)
+                 ========================================== -->
+            <div class="slide" data-time="02:45 - 03:50">
+                <span class="tag-pill"><i class="bi bi-boxes"></i> DIAGRAM UML 3 &bull; CLASS DIAGRAM (SOLID)</span>
+                <h2 class="slide-title">Class Diagram: Struktur Clean MVC & Prinsip SOLID</h2>
+                <p class="slide-sub">Memisahkan lapisan Controller, Model, Database PDO Wrapper, dan isolasi AI Service.</p>
+
+                <div class="card-grid-2">
+                    <div class="feature-card highlight-azure">
+                        <div class="card-title"><i class="bi bi-layers-fill text-primary"></i> Struktur Lapisan Kelas</div>
+                        <ul class="bullet-list" style="font-size: 11px;">
+                            <li><i class="bi bi-check-circle-fill"></i> <strong>Database:</strong> Singleton PDO wrapper dengan bind parameters aman dari SQLi.</li>
+                            <li><i class="bi bi-check-circle-fill"></i> <strong>Model (Abstract Induk):</strong> Menginjeksi koneksi Database ke seluruh model turunan.</li>
+                            <li><i class="bi bi-check-circle-fill"></i> <strong>UserModel, PostModel, ChatModel:</strong> Entitas bisnis terisolasi mengelola tabel masing-masing.</li>
+                            <li><i class="bi bi-check-circle-fill"></i> <strong>PostController & ChatController:</strong> Pengendali logika HTTP & otorisasi RBAC.</li>
+                            <li><i class="bi bi-check-circle-fill"></i> <strong>AIProviderService:</strong> Modul service independen multi-model (Gemini & NVIDIA).</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card highlight-purple">
+                        <div class="card-title" style="color: var(--purple);"><i class="bi bi-award-fill"></i> Kepatuhan Prinsip SOLID</div>
+                        <div style="font-size: 11px; line-height: 1.5; color: #334155; display: flex; flex-direction: column; gap: 8px;">
+                            <div>
+                                <strong style="color: var(--navy);">1. Single Responsibility (SRP):</strong> Setiap kelas hanya memiliki satu alasan perubahan. Komunikasi AI diisolasi penuh di <code>AIProviderService</code>, tidak mengotori Controller.
+                            </div>
+                            <div>
+                                <strong style="color: var(--navy);">2. Open/Closed Principle (OCP):</strong> Arsitektur service AI terbuka untuk penambahan provider baru tanpa harus mengubah kode Controller.
+                            </div>
+                            <div>
+                                <strong style="color: var(--navy);">3. Liskov Substitution (LSP):</strong> UserModel, PostModel, dan ChatModel dapat saling menggantikan antarmuka kelas induk <code>Model</code> secara konsisten.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 SLIDE 5: Diagram UML 4: Sequence Diagram
+                 ========================================== -->
+            <div class="slide" data-time="03:50 - 04:50">
+                <span class="tag-pill"><i class="bi bi-arrow-left-right"></i> DIAGRAM UML 4 &bull; SEQUENCE DIAGRAM</span>
+                <h2 class="slide-title">Sequence Diagram: Alur Pertukaran Pesan Negosiasi</h2>
+                <p class="slide-sub">Menelusuri kronologi siklus pesan antara Customer, View, ChatController, ChatModel, dan MySQL Database.</p>
+
+                <div style="display: flex; flex-direction: column; gap: 8px; flex: 1;">
+                    <div style="display: grid; grid-template-columns: 80px 1fr; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; padding: 8px 12px; font-size: 11.5px;">
+                        <span style="font-weight: 700; color: #0284C7;">Tahap 1</span>
+                        <span><strong>Pengajuan Tawaran:</strong> Customer membuka modal di View & kirim nominal Rp 150.000 via AJAX POST dengan token CSRF.</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 80px 1fr; background: #F8FAFC; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 11.5px;">
+                        <span style="font-weight: 700; color: var(--navy);">Tahap 2</span>
+                        <span><strong>Validasi Controller:</strong> <code>ChatController</code> memvalidasi sesi RBAC dan memastikan status postingan keluhan masih aktif.</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 80px 1fr; background: #F8FAFC; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 11.5px;">
+                        <span style="font-weight: 700; color: var(--navy);">Tahap 3</span>
+                        <span><strong>Penyimpanan Transaksi:</strong> <code>ChatModel</code> mengeksekusi INSERT ke tabel <code>price_negotiations</code> (status: pending) dan tabel <code>messages</code>.</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 80px 1fr; background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 8px; padding: 8px 12px; font-size: 11.5px;">
+                        <span style="font-weight: 700; color: #16A34A;">Tahap 4</span>
+                        <span><strong>Penerimaan Deal:</strong> Mitra Teknisi klik tombol 'Terima Deal' pada kartu pesan di ruang chat.</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 80px 1fr; background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: 8px; padding: 8px 12px; font-size: 11.5px;">
+                        <span style="font-weight: 700; color: #059669;">Tahap 5</span>
+                        <span><strong>Penguncian Harga (Deal Lock):</strong> <code>PostModel::updateAgreedPrice(150000)</code> mengunci harga di database. Kartu hijau Deal Lock tampil di layar.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 SLIDE 6: UI/UX & Design System
+                 ========================================== -->
+            <div class="slide" data-time="04:50 - 05:40">
+                <span class="tag-pill"><i class="bi bi-palette-fill"></i> PERANCANGAN UI/UX & FIGMA</span>
+                <h2 class="slide-title">Design System & Inovasi Ergonomis Antarmuka</h2>
+                <p class="slide-sub">Mengadopsi Microsoft Fluent 2 Azure dengan arsitektur 1-Screen Viewport Lock.</p>
+
+                <div class="card-grid-3">
+                    <div class="feature-card highlight-azure">
+                        <div class="card-title"><i class="bi bi-brush-fill text-primary"></i> Design Tokens</div>
+                        <ul class="bullet-list">
+                            <li><i class="bi bi-circle-fill" style="color: #0078D4;"></i> <strong>Azure Blue (#0078D4):</strong> Brand accent utama melambangkan teknologi terpercaya.</li>
+                            <li><i class="bi bi-circle-fill" style="color: #003049;"></i> <strong>Deep Navy (#003049):</strong> Surface hero command center yang kokoh.</li>
+                            <li><i class="bi bi-circle-fill" style="color: #10B981;"></i> <strong>Emerald Green:</strong> Status Deal Lock disetujui & mitra terverifikasi.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card highlight-green">
+                        <div class="card-title"><i class="bi bi-phone-fill text-success"></i> 1-Screen Viewport Lock</div>
+                        <ul class="bullet-list">
+                            <li><i class="bi bi-check2-circle"></i> Mengunci container chat 100% pada tinggi viewport perangkat.</li>
+                            <li><i class="bi bi-check2-circle"></i> Mencegah outer scrolling berlebih pada desktop & browser HP.</li>
+                            <li><i class="bi bi-check2-circle"></i> Hanya area obrolan yang bergulir halus (smooth internal scroll).</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card highlight-purple">
+                        <div class="card-title" style="color: var(--purple);"><i class="bi bi-grid-1x2-fill"></i> Komponen Interaktif</div>
+                        <ul class="bullet-list">
+                            <li><i class="bi bi-star-fill text-warning"></i> Preview instan unggahan foto keluhan kerusakan.</li>
+                            <li><i class="bi bi-star-fill text-warning"></i> Modal tawar-menawar harga terintegrasi di chat.</li>
+                            <li><i class="bi bi-star-fill text-warning"></i> Widget Chatbot AI mengambang di pojok kanan bawah.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 SLIDE 7: Kesimpulan & Roadmap
+                 ========================================== -->
+            <div class="slide" data-time="05:40 - 06:00">
+                <span class="tag-pill"><i class="bi bi-check-circle-fill"></i> PENUTUP & KESIMPULAN TAHAP 2</span>
+                <h2 class="slide-title">Kesimpulan SDD & Kesiapan Menuju Tahap 3 (CI/CD)</h2>
+                <p class="slide-sub">Pemodelan arsitektur UML tuntas dan siap diuji secara live pada video final.</p>
+
+                <div class="feature-card highlight-green" style="flex: 1; padding: 24px; justify-content: center; gap: 14px;">
+                    <div style="font-size: 14.5px; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 8px;">
+                        <i class="bi bi-trophy-fill text-warning fs-5"></i> Capaian Luaran Progres 2:
+                    </div>
+                    <ul class="bullet-list" style="font-size: 12.5px; gap: 10px;">
+                        <li><i class="bi bi-check-circle-fill text-success"></i> <strong>4 Diagram UML Lengkap & Konsisten:</strong> Use Case, Activity, Class Diagram berbasis prinsip SOLID, dan Sequence Diagram saling sinkron.</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Kepatuhan Standar Kurikulum OBE:</strong> Penjelasan mendalam mengenai logika kode, isolasi AI service, dan arsitektur database.</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Kesiapan Tahap 3 (CI/CD DevOps):</strong> Arsitektur ini terbukti berjalan di kode nyata dan lulus pengujian otomatis GitHub Actions.</li>
+                    </ul>
+                    <div style="margin-top: 16px; padding: 14px 20px; background: #F0FDF4; border-radius: 10px; border-left: 4px solid var(--green); font-size: 13px; font-weight: 600; color: #166534;">
+                        Terima Kasih atas Perhatian Bapak Dosen Pengampu Yudhistira Arie Wijaya, M.Kom., CDS. & Rekan-Rekan Sekalian.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Speaker Notes Drawer (Toggled by 'S') -->
+    <aside id="notesDrawer" class="notes-drawer">
+        <div class="notes-header">
+            <div class="notes-title">
+                <i class="bi bi-chat-left-quote-fill"></i>
+                <span>Skrip Pembicara</span>
+            </div>
+            <div id="notesTimestamp" class="notes-time">00:00 - 00:40</div>
+        </div>
+        <div id="notesContent" class="notes-body">
+            <!-- Dynamically populated from JS -->
+        </div>
+    </aside>
+
+    <!-- Bottom Controls & Hints -->
+    <footer class="bottom-bar">
+        <div class="keyboard-hint">
+            <span>Navigasi:</span>
+            <span><span class="kbd">←</span> <span class="kbd">→</span> atau <span class="kbd">Space</span></span>
+            <span>Skrip: <span class="kbd">S</span></span>
+            <span>Layar Penuh: <span class="kbd">F11</span></span>
+        </div>
+        <div class="nav-btn-group">
+            <button id="prevBtn" class="btn-nav"><i class="bi bi-chevron-left"></i> Sebelumnya</button>
+            <span id="slideIndicator" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #fff; padding: 0 10px;">1 / 7</span>
+            <button id="nextBtn" class="btn-nav">Selanjutnya <i class="bi bi-chevron-right"></i></button>
+        </div>
+    </footer>
+
+    <!-- Presentation Engine JS -->
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideIndicator = document.getElementById('slideIndicator');
+        const toggleNotesBtn = document.getElementById('toggleNotesBtn');
+        const notesDrawer = document.getElementById('notesDrawer');
+        const notesContent = document.getElementById('notesContent');
+        const notesTimestamp = document.getElementById('notesTimestamp');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+        let currentSlide = 0;
+
+        const speakerNotes = [
+            // Slide 1: Intro
+            `[00:00 - 00:40] PEMBUKA & IDENTITAS MAHASISWA:
+
+"Assalamu’alaikum Warahmatullahi Wabarakatuh. Selamat pagi/siang kepada Bapak Dosen Pengampu, Bapak Yudhistira Arie Wijaya, M.Kom., CDS., dan rekan-rekan semuanya.
+
+Kembali lagi bersama saya Yoga Fratama Fahdi Sardi, NIM 41257243, mahasiswa Program Studi S1 Teknik Informatika di STMIK IKMI Cirebon.
+
+Setelah pada video Progres 1 sebelumnya kita telah menuntaskan spesifikasi kebutuhan PRD, pada video Progres 2 kali ini saya akan mempresentasikan Software Design Document (SDD) aplikasi BANTUIN, yang membedah secara runut 4 Diagram UML Utama—yaitu Use Case Diagram, Activity Diagram, Class Diagram berorientasi objek berbasis prinsip SOLID, Sequence Diagram—serta rancangan antarmuka UI/UX dan design system.
+
+Mari kita bedah diagram yang pertama."`,
+
+            // Slide 2: Use Case
+            `[00:40 - 01:45] DIAGRAM UML 1: USE CASE DIAGRAM & SKENARIO:
+
+"Diagram pertama adalah Use Case Diagram. Dalam sistem BANTUIN, terdapat 4 aktor yang berinteraksi:
+Tiga aktor primer manusia, yaitu Customer, Mitra Teknisi, dan Super Administrator, serta satu aktor sekunder yaitu Sistem AI sebagai penyedia inferensi cerdas.
+
+Fungsionalitas sistem mencakup 10 use case terpadu, mulai dari registrasi akun, konsultasi AI, penerbitan keluhan, hingga transaksi.
+
+Skenario intinya adalah: Customer mengunggah foto kerusakan pada modul konsultasi AI. Sistem AI menganalisis dan mengeluarkan estimasi biaya wajar. Setelah keluhan diterbitkan, teknisi melihat feed, masuk ke ruang chat privat, dan melakukan negosiasi harga.
+
+Saat kedua belah pihak sepakat, fitur Deal Lock mengunci nominal harga pengerjaan, sehingga tidak ada kenaikan ongkos liar di lapangan. Alur inilah yang kemudian kita detailkan pada Activity Diagram."`,
+
+            // Slide 3: Activity Diagram
+            `[01:45 - 02:45] DIAGRAM UML 2: ACTIVITY DIAGRAM ALUR BISNIS & AI:
+
+"Memasuki diagram kedua, yaitu Activity Diagram. Diagram ini memodelkan aliran aktivitas dari awal hingga transaksi selesai.
+
+Dimulai dari Tahap 1: Saat formulir konsultasi dikirimkan oleh Customer, sistem melakukan percabangan keputusan logika:
+Jika koneksi cloud dan API key aktif, sistem mengeksekusi inferensi AI melalui Google Gemini atau NVIDIA NIM. Namun jika internet sedang terganggu atau API key kosong, sistem secara otomatis beralih ke Contextual Heuristic Fallback, sehingga sistem zero crash dan tetap menghasilkan rekomendasi yang rasional.
+
+Masuk ke Tahap 2: Hasil konsultasi diterbitkan menjadi postingan keluhan. Teknisi membaca keluhan dan membuka ruang chat. Di ruang chat terjadi aktivitas negosiasi harga. Terdapat kondisi pengambilan keputusan: jika tawaran ditolak, terjadi siklus nego ulang. Jika tawaran disetujui, aktivitas berlanjut ke penguncian harga Deal Lock.
+
+Dan di Tahap 3: Setelah pekerjaan fisik selesai, customer mengonfirmasi pembayaran, status pesanan diperbarui menjadi Selesai, dan faktur digital diterbitkan."`,
+
+            // Slide 4: Class Diagram (SOLID)
+            `[02:45 - 03:50] DIAGRAM UML 3: CLASS DIAGRAM BERORIENTASI OBJEK (SOLID):
+
+"Diagram ketiga adalah Class Diagram berorientasi objek yang mematuhi prinsip SOLID, sesuai ketentuan rubrik penilaian OBE.
+
+Di lapisan paling dasar, kita memiliki kelas Database sebagai pembungkus PDO yang aman dari SQL Injection. Kelas ini diinjeksi ke dalam kelas abstrak Model, yang kemudian diturunkan oleh UserModel, PostModel, dan ChatModel.
+
+Penerapan prinsip SOLID diimplementasikan secara nyata pada kode sistem kami:
+Pertama, Single Responsibility Principle (SRP): Setiap model hanya bertanggung jawab pada tabelnya masing-masing. Dan yang paling penting, komunikasi kecerdasan buatan tidak dicampur aduk di controller, melainkan diisolasi penuh di dalam kelas AIProviderService.
+
+Kedua, Open/Closed Principle (OCP): AIProviderService dirancang agar terbuka untuk penambahan model AI masa depan tanpa perlu merombak Controller yang sudah stabil.
+
+Dan ketiga, Liskov Substitution Principle (LSP): Seluruh model anak dapat menggantikan kelas Model induk dengan aman dan konsisten. Hubungan antar-kelas ini menjamin kode sistem BANTUIN sangat bersih, terstruktur, dan mudah dipelihara."`,
+
+            // Slide 5: Sequence Diagram
+            `[03:50 - 04:50] DIAGRAM UML 4: SEQUENCE DIAGRAM ALUR PERTUKARAN PESAN:
+
+"Diagram keempat adalah Sequence Diagram yang membedah alur pertukaran pesan secara kronologis pada fitur unggulan kami, yaitu Negosiasi & Deal Lock.
+
+Alur kronologisnya berjalan sebagai berikut:
+Pertama, Customer membuka modal di View dan memasukkan tawaran Rp 150.000.
+Kedua, View mengirimkan request AJAX POST ke ChatController lengkap dengan proteksi CSRF Token.
+Ketiga, ChatController memeriksa hak akses pengguna dan memanggil ChatModel::createNegotiation.
+Keempat, ChatModel menyimpan record ke tabel price_negotiations dengan status pending dan menyisipkan pesan penawaran ke tabel messages.
+Kelima, saat Mitra Teknisi menekan tombol 'Terima (Deal)', request dikirim ke endpoint /chat/negotiate-action.
+Keenam, ChatModel memperbarui status nego menjadi 'accepted', lalu memanggil PostModel untuk mengeksekusi update kolom agreed_price di database.
+
+Hasilnya, nominal Rp 150.000 resmi dikunci di database dan kedua belah pihak mendapatkan notifikasi visual kartu Deal Lock. Alur ini memastikan integritas data transaksi 100% terjaga dan transparan."`,
+
+            // Slide 6: UI/UX
+            `[04:50 - 05:40] PERANCANGAN ANTARMUKA UI/UX & DESIGN SYSTEM:
+
+"Selain diagram UML, luaran Tahap 2 ini mencakup perancangan antarmuka UI/UX berbasis prinsip Microsoft Fluent 2.
+
+Kami merancang Design System yang konsisten:
+Dari segi warna: menggunakan warna utama Fluent Azure Blue (#0078D4) yang melambangkan keandalan teknologi, dipadukan dengan Deep Navy (#003049) pada header command center untuk memberikan kesan kokoh dan elegan.
+
+Salah satu inovasi ergonomis terbaik kami adalah arsitektur 1-Screen Viewport Lock pada ruang chat: tinggi halaman terkunci pas satu layar penuh tanpa scrolling luar, sehingga pengguna merasa sedang menggunakan aplikasi native yang sangat nyaman.
+
+Semua komponen—mulai dari pratinjau unggah foto kerusakan, modal tawar-menawar harga, hingga widget chatbot AI—dirancang responsif dan telah teruji optimal diakses lewat layar smartphone maupun layar monitor desktop."`,
+
+            // Slide 7: Outro
+            `[05:40 - 06:00] PENUTUP & KESIAPAN TAHAP SELANJUTNYA:
+
+"Sebagai penutup, penyusunan Software Design Document (SDD) ini membuktikan bahwa rancangan sistem BANTUIN telah matang secara teoritis maupun arsitektural. Empat diagram UML yang disajikan saling melengkapi dari level interaksi pengguna, alur proses bisnis, struktur kode SOLID, hingga pertukaran pesan database.
+
+Dengan selesainya perancangan ini, sistem siap melangkah ke Tahap 3 dan Video Final, di mana kita akan menguji kode aplikasi secara live, menjalankan pengujian otomatis, dan memverifikasi status hijau pada CI/CD Pipeline GitHub Actions.
+
+Demikian presentasi Progres 2 ini. Terima kasih banyak atas perhatian Bapak Yudhistira dan rekan-rekan sekalian.
+Wabillahi taufiq wal hidayah, Wassalamu’alaikum Warahmatullahi Wabarakatuh."`
+        ];
+
+        function updateSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+
+            slideIndicator.textContent = `${index + 1} / ${slides.length}`;
+            prevBtn.disabled = (index === 0);
+            nextBtn.disabled = (index === slides.length - 1);
+
+            // Update notes
+            notesContent.textContent = speakerNotes[index] || '';
+            const activeSlideElem = slides[index];
+            notesTimestamp.textContent = activeSlideElem.getAttribute('data-time') || '';
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide(currentSlide);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateSlide(currentSlide);
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    updateSlide(currentSlide);
+                }
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide(currentSlide);
+                }
+            } else if (e.key.toLowerCase() === 's') {
+                notesDrawer.classList.toggle('open');
+                toggleNotesBtn.classList.toggle('active');
+            }
+        });
+
+        toggleNotesBtn.addEventListener('click', () => {
+            notesDrawer.classList.toggle('open');
+            toggleNotesBtn.classList.toggle('active');
+        });
+
+        fullscreenBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(() => {});
+            } else {
+                document.exitFullscreen().catch(() => {});
+            }
+        });
+
+        // Initialize first slide
+        updateSlide(0);
+    </script>
+</body>
+</html>
